@@ -1,0 +1,690 @@
+import os
+import json
+import time
+import csv
+import re
+import io
+import requests
+import traceback
+import argparse
+import pandas as pd
+from bs4 import BeautifulSoup
+from google import genai
+from google.genai import types
+import gspread
+from google.oauth2.service_account import Credentials
+from typing import List, Dict, Any
+import docx
+import PyPDF2
+
+# --- CONFIGURATION ---
+URL_LISTEN = "https://www.genderpodcast.com/listen"
+TRANSCRIPTS_DIR = "transcripts"
+PIPELINE_STATE_FILE = "pipeline_state.json"
+CSV_OUTPUT = "extracted_media.csv"
+GOOGLE_SHEET_ID = "1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU"
+
+# Gemini API Configuration
+GEMINI_API_KEY = "AIzaSyBZW9eb8Spfa_XxgaBZYWHcKEBId0vWw60"  # User must replace this
+GEMINI_MODEL_NAME = "gemini-2.5-flash" # Current standard for 2026
+
+# Conservative Rate Limiting (Lowered for stability)
+# Flash Free Tier is officially 15 RPM/1M TPM, but we'll use 5/500k for safety with Search.
+TPM_LIMIT = 500000
+RPM_LIMIT = 5 
+
+# Google Sheets Configuration
+SERVICE_ACCOUNT_FILE = "service_account.json"  # User must provide this
+
+# Media Categories
+CATEGORIES = [
+    "academic", "artists", "books", "games", "graphic novels",
+    "movies", "music", "podcasts", "publications", "tv shows",
+    "websites", "zines"
+]
+
+# --- UTILS ---
+
+def get_headers():
+    """Browser-like headers to avoid being blocked by Squarespace."""
+    return {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+    }
+
+class RSSDataFetcher:
+    """Fetches and maps episode dates and show notes from the Libsyn RSS feed."""
+    RSS_URL = "https://gender.libsyn.com/rss"
+
+    def __init__(self):
+        self.episode_map = {} # Map of ep_key -> {date, show_notes}
+        self._fetch_rss_data()
+
+    def _fetch_rss_data(self):
+        print(f"Fetching episode data from {self.RSS_URL}...")
+        try:
+            response = retry_with_backoff(lambda: requests.get(self.RSS_URL, timeout=30))
+            soup = BeautifulSoup(response.content, 'xml')
+            items = soup.find_all('item')
+            
+            for item in items:
+                title = item.title.text if item.title else ""
+                pub_date_raw = item.pubDate.text if item.pubDate else ""
+                # Use description or content:encoded for show notes
+                show_notes = item.description.text if item.description else ""
+                if not show_notes and item.find('content:encoded'):
+                    show_notes = item.find('content:encoded').text
+                
+                # Format: Mon, 27 Apr 2026 07:00:00 +0000 -> 27 Apr 2026
+                date_match = re.search(r'\d{1,2}\s+[A-Za-z]{3}\s+\d{4}', pub_date_raw)
+                pub_date = date_match.group(0) if date_match else pub_date_raw
+
+                data = {"date": pub_date, "show_notes": show_notes}
+
+                # Try to extract episode number
+                num_match = re.search(r'(?:Episode|Epsiode)\s*(\d+\.?\d*)', title, re.IGNORECASE)
+                if num_match:
+                    self.episode_map[num_match.group(1)] = data
+                
+                # Also store by cleaned title for bonus episodes
+                clean_title = clean_guest_name(title)
+                if clean_title:
+                    self.episode_map[clean_title.lower()] = data
+                    
+        except Exception as e:
+            print(f"WARNING: Could not fetch RSS data: {e}")
+
+    def get_data(self, ep_num: str, ep_name: str) -> Dict:
+        # Try by number first
+        if ep_num and ep_num in self.episode_map:
+            return self.episode_map[ep_num]
+        
+        # Try by cleaned name
+        clean_name = clean_guest_name(ep_name).lower()
+        if clean_name in self.episode_map:
+            return self.episode_map[clean_name]
+            
+        return {"date": "", "show_notes": ""}
+
+class TokenRateLimiter:
+    """Tracks and manages TPM (Tokens Per Minute) and RPM (Requests Per Minute) limits."""
+    def __init__(self, tpm_limit: int, rpm_limit: int):
+        self.tpm_limit = tpm_limit
+        self.rpm_limit = rpm_limit
+        self.tokens_used = [] # List of (timestamp, token_count)
+        self.requests_made = [] # List of timestamps
+
+    def _clean_old_records(self):
+        now = time.time()
+        self.tokens_used = [r for r in self.tokens_used if now - r[0] < 60]
+        self.requests_made = [t for t in self.requests_made if now - t < 60]
+
+    def wait_for_capacity(self, estimated_tokens: int):
+        """Blocks until there is capacity for the estimated tokens and a new request."""
+        # Safeguard against tokens exceeding limit
+        if estimated_tokens > self.tpm_limit:
+            estimated_tokens = self.tpm_limit
+
+        while True:
+            self._clean_old_records()
+            current_tpm = sum(r[1] for r in self.tokens_used)
+            current_rpm = len(self.requests_made)
+
+            if current_rpm < self.rpm_limit and (current_tpm + estimated_tokens) <= self.tpm_limit:
+                break
+            
+            # Calculate sleep time
+            sleep_time = 1
+            if current_rpm >= self.rpm_limit:
+                # Wait until the oldest request is > 60s old
+                sleep_time = max(sleep_time, 60 - (time.time() - self.requests_made[0]) + 0.5)
+            
+            if (current_tpm + estimated_tokens) > self.tpm_limit:
+                # Find how many tokens we need to drop
+                needed = (current_tpm + estimated_tokens) - self.tpm_limit
+                dropped = 0
+                for ts, count in self.tokens_used:
+                    dropped += count
+                    if dropped >= needed:
+                        sleep_time = max(sleep_time, 60 - (time.time() - ts) + 0.5)
+                        break
+            
+            print(f"      GEMINI RATE LIMIT: Waiting {sleep_time:.1f}s for capacity (Current TPM: {current_tpm}, RPM: {current_rpm})...")
+            time.sleep(sleep_time)
+
+    def record_usage(self, token_count: int):
+        """Records actual token usage after a successful request."""
+        now = time.time()
+        self.tokens_used.append((now, token_count))
+        self.requests_made.append(now)
+
+def retry_with_backoff(fn, max_retries=5, initial_delay=2, cap=60):
+    """Exponential backoff wrapper for API calls and web requests."""
+    attempt = 0
+    while attempt < max_retries:
+        try:
+            return fn()
+        except Exception as e:
+            err_msg = str(e).lower()
+            
+            # Identify the type of error for a cleaner message
+            source = "GENERIC"
+            # Check if it's a requests error with a response
+            if hasattr(e, 'response') and e.response is not None:
+                source = f"WEBSITE ({e.response.url})"
+            # Check if it's a Gemini/Google error
+            elif "genai" in str(type(e)).lower() or "google" in err_msg or "resource_exhausted" in err_msg:
+                source = "GEMINI API"
+
+            if "503" in err_msg or "unavailable" in err_msg:
+                friendly_err = f"{source}: Server temporarily unavailable (503)"
+            elif "429" in err_msg or "rate limit" in err_msg or "quota" in err_msg or "exhausted" in err_msg:
+                friendly_err = f"{source}: Rate limit or quota exceeded (429)"
+            elif "500" in err_msg:
+                friendly_err = f"{source}: Internal server error (500)"
+            else:
+                friendly_err = f"{source}: Unexpected error: {e}"
+
+            if any(code in err_msg for code in ["429", "503", "500", "rate limit", "unavailable", "quota", "exhausted"]):
+                delay = min(initial_delay * (2 ** attempt), cap)
+                print(f"      {friendly_err}. Retrying in {delay}s (Attempt {attempt + 1}/{max_retries})...")
+                time.sleep(delay)
+                attempt += 1
+            else:
+                raise e
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+
+def clean_guest_name(name: str) -> str:
+    """Removes common prefixes and noise from guest/episode names."""
+    # Remove "Bonus: "
+    name = re.sub(r'^Bonus:\s*', '', name, flags=re.IGNORECASE)
+    # Remove "Checking in with "
+    name = re.sub(r'^Checking\s+in\s+with\s+', '', name, flags=re.IGNORECASE)
+    # Remove "Spicy Advicey with "
+    name = re.sub(r'^Spicy\s+Advicey\s+with\s+', '', name, flags=re.IGNORECASE)
+    # Remove "Advice Questions with "
+    name = re.sub(r'^\d+\s+Advice\s+Questions\s+with\s+', '', name, flags=re.IGNORECASE)
+    # Remove "Live in/at ..."
+    name = re.sub(r'^Live\s+(?:in|at)\s+[^:]+[:\s]*', '', name, flags=re.IGNORECASE)
+    # Remove "Speed Reading"
+    name = re.sub(r'^SPEED\s+READING\s*', '', name, flags=re.IGNORECASE)
+    
+    # Trim common suffix noise
+    name = re.sub(r'\(Live\)', '', name, flags=re.IGNORECASE)
+    name = re.sub(r'segment transcript', '', name, flags=re.IGNORECASE)
+    name = re.sub(r'’s villain era', '', name, flags=re.IGNORECASE)
+    
+    return name.strip()
+
+# --- SCRAPER ---
+
+class GenderRevealScraper:
+    def __init__(self, transcripts_dir: str):
+        self.transcripts_dir = transcripts_dir
+        if not os.path.exists(transcripts_dir):
+            os.makedirs(transcripts_dir)
+
+    def scrape_episodes(self):
+        print(f"Scraping {URL_LISTEN}...")
+        response = retry_with_backoff(lambda: requests.get(URL_LISTEN, headers=get_headers(), timeout=30))
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        episodes_data = []
+        current_season = None
+        
+        # Squarespace content area
+        content_div = soup.find('div', class_='sqs-layout') or soup.find('main')
+        if not content_div:
+            print("WARNING: Could not find main content area on page.")
+            return []
+        
+        # Find all season headers and lists
+        elements = content_div.find_all(['h2', 'ul', 'p'])
+        
+        for i, element in enumerate(elements):
+            text = element.get_text(strip=True)
+            
+            # Detect Season headers (e.g., "Season 14" or "Season 7")
+            if "SEASON" in text.upper() and len(text) < 20:
+                current_season = text.strip()
+                continue
+                
+            # If it's a list (ul), it might contain episodes with embedded transcript links
+            if element.name == 'ul':
+                for li in element.find_all('li'):
+                    li_text = li.get_text()
+                    
+                    # Pattern 1: Episode 188: Whit Washington
+                    match = re.search(r'(?:Episode|Epsiode)\s*(\d+\.?\d*):?\s*(.*)', li_text, re.IGNORECASE)
+                    
+                    # Pattern 2: Bonus: ...
+                    bonus_match = re.search(r'Bonus:\s*(.*)', li_text, re.IGNORECASE)
+                    
+                    if match or bonus_match:
+                        if match:
+                            ep_num = match.group(1)
+                            ep_name = match.group(2).split('(')[0].strip()
+                        else:
+                            ep_num = "Bonus"
+                            ep_name = bonus_match.group(1).split('(')[0].strip()
+                        
+                        # Find link within this <li>
+                        link_el = li.find('a')
+                        if link_el:
+                            url = link_el.get('href')
+                            if url and ("/s/" in url or "/transcripts/" in url or "transcript" in url.lower()):
+                                if url.startswith('/'):
+                                    url = "https://www.genderpodcast.com" + url
+                                
+                                episodes_data.append({
+                                    "season": current_season,
+                                    "episode_number": ep_num,
+                                    "episode_name": ep_name,
+                                    "transcript_url": url
+                                })
+                                continue # Found transcript in the link title itself
+
+                    # Check for "transcript" link specifically if not found above
+                    transcript_links = li.find_all('a')
+                    for tl in transcript_links:
+                        if "transcript" in tl.get_text().lower():
+                            url = tl.get('href')
+                            if url:
+                                if url.startswith('/'):
+                                    url = "https://www.genderpodcast.com" + url
+                                episodes_data.append({
+                                    "season": current_season,
+                                    "episode_number": ep_num if 'ep_num' in locals() else "Unknown",
+                                    "episode_name": ep_name if 'ep_name' in locals() else li_text,
+                                    "transcript_url": url
+                                })
+
+        return episodes_data
+
+    def download_transcript(self, url: str, filename: str):
+        # Determine extension based on URL if not in filename
+        ext = url.split('.')[-1].lower()
+        if ext not in ['txt', 'docx', 'pdf', 'doc', 'odt']:
+            ext = 'html'
+        
+        # Ensure filename has correct extension
+        base_name = os.path.splitext(filename)[0]
+        full_filename = f"{base_name}.{ext}"
+        path = os.path.join(self.transcripts_dir, full_filename)
+        
+        if os.path.exists(path):
+            return full_filename
+            
+        print(f"Downloading transcript: {url} -> {full_filename}")
+        def fetch():
+            res = requests.get(url, timeout=30, headers=get_headers())
+            res.raise_for_status()
+            return res.content
+
+        try:
+            # Politeness delay to avoid website rate limits
+            time.sleep(2)
+            content = retry_with_backoff(fetch)
+            with open(path, 'wb') as f:
+                f.write(content)
+            return full_filename
+        except Exception as e:
+            print(f"      FAILED to download {url}: {e}")
+            return None
+
+    def extract_text(self, filename: str):
+        path = os.path.join(self.transcripts_dir, filename)
+        ext = filename.split('.')[-1].lower()
+        
+        try:
+            if ext == 'docx':
+                doc = docx.Document(path)
+                return "\n".join([para.text for para in doc.paragraphs])
+            elif ext == 'pdf':
+                reader = PyPDF2.PdfReader(path)
+                text = ""
+                for page in reader.pages:
+                    text += page.extract_text()
+                return text
+            elif ext in ['txt', 'html']:
+                with open(path, 'r', encoding='utf-8', errors='replace') as f:
+                    content = f.read()
+                if ext == 'html':
+                    soup = BeautifulSoup(content, 'html.parser')
+                    # Look for main content or transcript area
+                    body = soup.find('div', class_='sqs-layout') or \
+                           soup.find('main') or \
+                           soup.find('article') or \
+                           soup.find('div', class_='entry-content')
+                    return body.get_text(separator='\n') if body else soup.get_text()
+                return content
+            elif ext in ['doc', 'odt']:
+                print(f"      WARNING: Binary format .{ext} not directly supported. Skipping.")
+                return ""
+            else:
+                # Try reading as text as fallback for unknown extensions
+                with open(path, 'r', encoding='utf-8', errors='replace') as f:
+                    return f.read()
+        except Exception as e:
+            print(f"Error reading file {filename}: {e}")
+            return ""
+
+# --- EXTRACTION ---
+
+class MediaExtractor:
+    def __init__(self, api_key: str, tpm_limit: int, rpm_limit: int):
+        self.client = genai.Client(api_key=api_key)
+        self.rate_limiter = TokenRateLimiter(tpm_limit, rpm_limit)
+
+    def extract_from_text(self, text: str, ep_metadata: Dict, show_notes: str = "") -> List[Dict]:
+        prompt = f"""
+Review the following podcast transcript and show notes to extract all media references.
+Media references are books, movies, music, etc., that the host or guest mentions.
+
+FOR EACH MEDIA ITEM FOUND:
+1. If the media name is "Gender Reveal" (the podcast itself), use the URL provided in the transcript or show notes.
+2. For ALL OTHER media items, use your search tool to LOOK UP a canonical URL for the work (e.g., its Wikipedia page, IMDb page, or official website). DO NOT use the URLs provided in the transcript or show notes for these items.
+
+Return ONLY a JSON array of objects. Each object MUST use these exact keys:
+- "media_type": Must be one of {', '.join(CATEGORIES)}. (MUST BE PLURAL).
+- "media_sub_category": (e.g., "Graphic Memoir" for a Graphic Novel, or "Indie Folk" for Music).
+- "media_name": The title or name of the work.
+- "url_to_media": The canonical URL you found via search (except for "Gender Reveal" items).
+- "guest": The guest for this episode ({ep_metadata.get('guest', 'Unknown')}).
+- "media_date": The release date of the media if mentioned in text, otherwise null.
+
+Episode Metadata: Season {ep_metadata.get('season')}, Episode {ep_metadata.get('episode_number')}, Name "{ep_metadata.get('episode_name')}".
+
+Show Notes (For context):
+{show_notes}
+
+Transcript Text:
+{text[:100000]}
+"""
+        # Estimate tokens (approx 3 chars per token + safety margin for output)
+        estimated_tokens = (len(prompt) // 3) + 2000
+        self.rate_limiter.wait_for_capacity(estimated_tokens)
+
+        def call_gemini():
+            response = self.client.models.generate_content(
+                model=GEMINI_MODEL_NAME,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                )
+            )
+            
+            # Record actual usage
+            try:
+                tokens = response.usage_metadata.total_token_count
+                self.rate_limiter.record_usage(tokens)
+            except:
+                self.rate_limiter.record_usage(estimated_tokens)
+
+            raw_text = response.text
+            if not raw_text:
+                print("      WARNING: Gemini returned an empty response. This might be due to safety filters or a model error.")
+                return []
+
+            # Try to find and parse a JSON array
+            json_match = re.search(r'\[.*\]', raw_text, re.DOTALL)
+            if json_match:
+                try:
+                    return json.loads(json_match.group(0))
+                except json.JSONDecodeError:
+                    print(f"      DEBUG: Found JSON-like block but failed to parse: {raw_text[:200]}...")
+            
+            # Final attempt at parsing the whole response
+            try:
+                return json.loads(raw_text)
+            except json.JSONDecodeError:
+                # If it's not JSON, it might be a text refusal or error message
+                print(f"      ERROR: AI response was not valid JSON. First 200 chars: {raw_text[:200]}")
+                return []
+
+        results = retry_with_backoff(call_gemini)
+        
+        # Mapping to handle potential casing/space variations from AI
+        key_map = {
+            "Media Type": "media_type",
+            "type": "media_type",
+            "Media Sub-category": "media_sub_category",
+            "sub_category": "media_sub_category",
+            "subcategory": "media_sub_category",
+            "Media Name": "media_name",
+            "name": "media_name",
+            "title": "media_name",
+            "URL to media": "url_to_media",
+            "url": "url_to_media",
+            "link": "url_to_media",
+            "Guest": "guest",
+            "Date": "media_date",
+            "media_date": "media_date",
+            "release_date": "media_date"
+        }
+
+        # Enrich and normalize results
+        final_results = []
+        for item in (results or []):
+            if not isinstance(item, dict):
+                continue
+
+            normalized_item = {}
+            # Apply mapping and lowercase keys
+            for k, v in item.items():
+                new_key = key_map.get(k, k.lower().replace(" ", "_"))
+                normalized_item[new_key] = v
+
+            # Normalize category values
+            if normalized_item.get('media_type') == 'academics':
+                normalized_item['media_type'] = 'academic'
+            if normalized_item.get('media_type') == 'tv_shows':
+                normalized_item['media_type'] = 'tv shows'
+
+            # Ensure episode metadata is present
+            normalized_item['season'] = ep_metadata.get('season')
+            normalized_item['episode_number'] = ep_metadata.get('episode_number')
+            normalized_item['episode_name'] = ep_metadata.get('episode_name')
+            normalized_item['episode_date'] = ep_metadata.get('episode_date')
+            
+            # Ensure all expected fields exist
+            for header in ["media_date", "guest", "media_type", "media_sub_category", "media_name", "url_to_media"]:
+                if header not in normalized_item:
+                    normalized_item[header] = None
+
+            # Only add if it has at least a media name
+            if normalized_item.get('media_name'):
+                final_results.append(normalized_item)
+            
+        return final_results
+
+# --- STATE MANAGEMENT ---
+
+class PipelineState:
+    def __init__(self, state_file: str, csv_file: str):
+        self.state_file = state_file
+        self.csv_file = csv_file
+        self.state = self.load_state()
+
+    def load_state(self):
+        if os.path.exists(self.state_file):
+            with open(self.state_file, 'r') as f:
+                return json.load(f)
+        return {"processed_files_ledger": []}
+
+    def save_state(self):
+        with open(self.state_file, 'w') as f:
+            json.dump(self.state, f, indent=4)
+
+    def is_processed(self, filename):
+        return filename in self.state["processed_files_ledger"]
+
+    def mark_processed(self, filename):
+        if filename not in self.state["processed_files_ledger"]:
+            self.state["processed_files_ledger"].append(filename)
+            self.save_state()
+
+    def append_to_csv(self, data: List[Dict]):
+        file_exists = os.path.isfile(self.csv_file)
+        headers = [
+            "season", "episode_number", "episode_name", "episode_date", "guest",
+            "media_type", "media_sub_category", "media_name", "url_to_media", "media_date"
+        ]
+        with open(self.csv_file, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=headers, extrasaction='ignore')
+            if not file_exists:
+                writer.writeheader()
+            writer.writerows(data)
+
+# --- GOOGLE SHEETS ---
+
+def sync_to_google_sheets(csv_file, service_account_file, sheet_id):
+    if not os.path.exists(service_account_file):
+        print(f"Skipping Google Sheets sync: {service_account_file} not found.")
+        return
+
+    if not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0:
+        print("Skipping Google Sheets sync: CSV file is empty or missing.")
+        return
+
+    print("Syncing to Google Sheets...")
+    scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    creds = Credentials.from_service_account_file(service_account_file, scopes=scope)
+    client = gspread.authorize(creds)
+    
+    sheet = client.open_by_key(sheet_id).get_worksheet(0)
+    
+    df = pd.read_csv(csv_file, encoding='utf-8').fillna("")
+    if df.empty:
+        print("CSV is empty, nothing to sync.")
+        return
+
+    data = [df.columns.values.tolist()] + df.values.tolist()
+    
+    sheet.clear()
+    sheet.update(data, 'A1')
+    print("Google Sheet updated successfully.")
+
+# --- MAIN ---
+
+def main():
+    parser = argparse.ArgumentParser(description="Gender Reveal Media Extraction Pipeline")
+    parser.add_argument("--sync-only", action="store_true", help="Only run the Google Sheets synchronization step")
+    parser.add_argument("--limit", type=int, help="Limit processing to N *new* episodes")
+    parser.add_argument("--skip-process", action="store_true", help="Skip scraping and AI processing, just sync if CSV exists")
+    args = parser.parse_args()
+
+    if GEMINI_API_KEY == "YOUR_GEMINI_API_KEY_HERE":
+        print("Please set your GEMINI_API_KEY in the script.")
+        return
+
+    # Handle sync-only or skip-process early
+    if args.sync_only or args.skip_process:
+        print("\n" + "="*50)
+        print("STEP 3: Synchronizing with Google Sheets (Standalone)")
+        print("="*50)
+        if os.path.exists(CSV_OUTPUT):
+            try:
+                sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+            except Exception as e:
+                print(f"FAILED to sync to Google Sheets: {e}")
+                traceback.print_exc()
+        else:
+            print("INFO: No local CSV data found to sync.")
+        return
+
+    scraper = GenderRevealScraper(TRANSCRIPTS_DIR)
+    extractor = MediaExtractor(GEMINI_API_KEY, TPM_LIMIT, RPM_LIMIT)
+    state = PipelineState(PIPELINE_STATE_FILE, CSV_OUTPUT)
+    data_fetcher = RSSDataFetcher()
+
+    # 1. Scrape episode list
+    print("\n" + "="*50)
+    print("STEP 1: Scraping episode list from Gender Reveal...")
+    print("="*50)
+    episodes = scraper.scrape_episodes()
+    total_episodes = len(episodes)
+    print(f"\nSUCCESS: Found {total_episodes} episodes with potential transcripts.")
+
+    # 2. Process episodes
+    print("\n" + "="*50)
+    print("STEP 2: Processing downloads and media extraction")
+    print("="*50)
+    
+    processed_count = 0
+    for i, ep in enumerate(episodes, 1):
+        if args.limit and processed_count >= args.limit:
+            print(f"\nINFO: Reached limit of {args.limit} episodes. Stopping processing.")
+            break
+
+        progress_prefix = f"[{i}/{total_episodes}]"
+        ep_display_name = f"Ep {ep['episode_number']}: {ep['episode_name']}"
+        
+        # Attach episode data from RSS
+        rss_data = data_fetcher.get_data(ep['episode_number'], ep['episode_name'])
+        ep['episode_date'] = rss_data['date']
+        show_notes = rss_data['show_notes']
+        
+        # Create a unique-ish filename
+        safe_name = re.sub(r'[^\w\-_]', '_', ep['episode_name'])[:30]
+        base_filename = f"ep_{ep['episode_number']}_{safe_name}"
+        
+        # Download (returns the actual filename with extension)
+        full_filename = scraper.download_transcript(ep['transcript_url'], base_filename)
+        if not full_filename:
+            print(f"{progress_prefix} SKIP: Failed to download transcript for {ep_display_name}")
+            continue
+            
+        # Extract if not already processed
+        if not state.is_processed(full_filename):
+            print(f"\n{progress_prefix} PROCESSING: {ep_display_name}")
+            print(f"      File: {full_filename}")
+            
+            text = scraper.extract_text(full_filename)
+            
+            if not text or len(text.strip()) < 100:
+                print(f"      WARNING: Transcript content too short ({len(text) if text else 0} chars). Skipping AI.")
+                state.mark_processed(full_filename)
+                continue
+
+            print(f"      AI ANALYSIS: Sending {len(text)} characters to Gemini ({GEMINI_MODEL_NAME})...")
+            try:
+                ep['guest'] = clean_guest_name(ep['episode_name']) 
+                media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+                
+                if media_refs:
+                    state.append_to_csv(media_refs)
+                    print(f"      SUCCESS: Extracted {len(media_refs)} media references.")
+                else:
+                    print(f"      INFO: No media references identified in this transcript.")
+                
+                state.mark_processed(full_filename)
+                processed_count += 1
+                
+            except Exception as e:
+                print(f"      ERROR during AI extraction: {e}")
+                traceback.print_exc()
+                continue
+        else:
+            print(f"{progress_prefix} SKIP: {ep_display_name} already processed.")
+
+    # 3. Final Sync to Google Sheets
+    print("\n" + "="*50)
+    print("STEP 3: Synchronizing with Google Sheets")
+    print("="*50)
+    if os.path.exists(CSV_OUTPUT):
+        try:
+            sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+        except Exception as e:
+            print(f"FAILED to sync to Google Sheets: {e}")
+            traceback.print_exc()
+    else:
+        print("INFO: No local CSV data found to sync.")
+
+    print("\n" + "="*50)
+    print("PIPELINE COMPLETE")
+    print("="*50)
+
+if __name__ == "__main__":
+    main()
