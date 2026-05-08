@@ -116,7 +116,7 @@ if df is not None:
         if not filtered_df.empty:
             # Grouping Logic
             favs = filtered_df.groupby(['media_name', 'media_type']).agg({
-                'guest': lambda x: ", ".join(sorted(list(set(filter(None, x))))),
+                'guest': lambda x: ", ".join(sorted(list(set([str(val) for val in x if pd.notna(val) and val != ""])))),
                 'image_url': 'first', # Take the first available cover
                 'url_to_media': 'first',
                 'season': 'count' # Use as mention count
