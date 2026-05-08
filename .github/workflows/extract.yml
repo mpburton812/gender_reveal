@@ -2,7 +2,7 @@ name: Media Extraction Pipeline
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # Weekly on Mondays at midnight UTC
+    - cron: '0 0 * * *' # Daily at midnight UTC
   workflow_dispatch:      # Manual trigger
 
 permissions:
