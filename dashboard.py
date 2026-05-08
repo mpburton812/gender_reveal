@@ -107,36 +107,27 @@ if df is not None:
         col3.metric("Episodes", filtered_df['episode_number'].nunique())
 
     # --- TABS ---
-    tab1, tab2, tab3 = st.tabs(["📚 Community Favorites", "🖼️ Visual Gallery", "🎙️ All Mentions Feed"])
+    tab1, tab2, tab3 = st.tabs(["🎙️ All Mentions Feed", "🖼️ Visual Gallery", "📚 Community Favorites"])
 
     with tab1:
-        # ... (Community Favorites logic unchanged)
-        st.subheader("Most Recommended Media")
-        st.markdown("Items grouped by popularity across all selected episodes.")
-        
-        if not filtered_df.empty:
-            # Grouping Logic
-            favs = filtered_df.groupby(['media_name', 'media_type']).agg({
-                'guest': lambda x: ", ".join(sorted(list(set([str(val) for val in x if pd.notna(val) and val != ""])))),
-                'image_url': 'first', # Take the first available cover
-                'url_to_media': 'first',
-                'season': 'count' # Use as mention count
-            }).reset_index()
-            
-            favs = favs.rename(columns={'season': 'mentions', 'guest': 'recommended_by'})
-            favs = favs.sort_values(by='mentions', ascending=False)
+        # Data Table (Existing)
+        st.dataframe(
+            filtered_df,
+            column_config={
+                "image_url": st.column_config.ImageColumn("Cover", help="Media Cover Art"),
+                "url_to_media": st.column_config.LinkColumn("Link"),
+                "episode_number": st.column_config.NumberColumn("Ep #", format="%d"),
+                "episode_url": st.column_config.LinkColumn("Listen to Ep"),
+                "mention_context": st.column_config.TextColumn("Context", width="large"),
+            },
+            hide_index=True,
+            use_container_width=True
+        )
 
-            st.dataframe(
-                favs,
-                column_config={
-                    "image_url": st.column_config.ImageColumn("Cover"),
-                    "mentions": st.column_config.NumberColumn("Mentions", format="%d 🔥"),
-                    "recommended_by": st.column_config.TextColumn("Recommended By", width="large"),
-                    "url_to_media": st.column_config.LinkColumn("Link"),
-                },
-                hide_index=True,
-                use_container_width=True
-            )
+        # Detailed Search / Discovery Section (Existing)
+        st.markdown("---")
+        st.subheader("Media Spotlight")
+        st.info("Click on a row in the table above to see more details, or use the search box to find specific mentions.")
 
     with tab2:
         st.subheader("Media Library")
@@ -174,24 +165,32 @@ if df is not None:
                                     st.link_button("📽️ View", get_letterboxd_link(m_name), use_container_width=True)
 
     with tab3:
-        # Data Table (Existing)
-        st.dataframe(
-            filtered_df,
-            column_config={
-                "image_url": st.column_config.ImageColumn("Cover", help="Media Cover Art"),
-                "url_to_media": st.column_config.LinkColumn("Link"),
-                "episode_number": st.column_config.NumberColumn("Ep #", format="%d"),
-                "episode_url": st.column_config.LinkColumn("Listen to Ep"),
-                "mention_context": st.column_config.TextColumn("Context", width="large"),
-            },
-            hide_index=True,
-            use_container_width=True
-        )
+        st.subheader("Most Recommended Media")
+        st.markdown("Items grouped by popularity across all selected episodes.")
+        
+        if not filtered_df.empty:
+            # Grouping Logic
+            favs = filtered_df.groupby(['media_name', 'media_type']).agg({
+                'guest': lambda x: ", ".join(sorted(list(set([str(val) for val in x if pd.notna(val) and val != ""])))),
+                'image_url': 'first', # Take the first available cover
+                'url_to_media': 'first',
+                'season': 'count' # Use as mention count
+            }).reset_index()
+            
+            favs = favs.rename(columns={'season': 'mentions', 'guest': 'recommended_by'})
+            favs = favs.sort_values(by='mentions', ascending=False)
 
-        # Detailed Search / Discovery Section (Existing)
-        st.markdown("---")
-        st.subheader("Media Spotlight")
-        # ... (rest of spotlight logic unchanged)
+            st.dataframe(
+                favs,
+                column_config={
+                    "image_url": st.column_config.ImageColumn("Cover"),
+                    "mentions": st.column_config.NumberColumn("Mentions", format="%d 🔥"),
+                    "recommended_by": st.column_config.TextColumn("Recommended By", width="large"),
+                    "url_to_media": st.column_config.LinkColumn("Link"),
+                },
+                hide_index=True,
+                use_container_width=True
+            )
     
     # Show detailed cards for the first few items in the filtered list
     spotlight_count = min(len(filtered_df), 5)
