@@ -63,6 +63,14 @@ df = load_data()
 if df is not None:
     # Sidebar Filters
     with st.sidebar:
+        st.title("Settings & Support")
+        
+        st.markdown("### 💖 Support the Show")
+        st.info("Gender Reveal is a non-profit podcast that relies on listener support.")
+        st.link_button("Join our Patreon", "https://www.patreon.com/gender", use_container_width=True)
+        st.link_button("Official Merch Shop", "https://bit.ly/gendermerch", use_container_width=True)
+        
+        st.markdown("---")
         st.header("Filters")
         search_query = st.text_input("Search Media or Guest", "")
 
@@ -73,12 +81,6 @@ if df is not None:
         media_types = sorted(df['media_type'].dropna().unique()) if 'media_type' in df.columns else []
         selected_types = st.multiselect("Media Type", media_types, default=media_types)
 
-        st.markdown("---")
-        st.markdown("### 💖 Support the Show")
-        st.info("Gender Reveal is a non-profit podcast that relies on listener support.")
-        st.link_button("Join our Patreon", "https://www.patreon.com/gender", use_container_width=True)
-        st.link_button("Official Merch Shop", "https://bit.ly/gendermerch", use_container_width=True)
-        
         st.markdown("---")
         if st.button("Refresh Data", use_container_width=True):
             st.cache_data.clear()
