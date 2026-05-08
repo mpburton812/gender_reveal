@@ -148,6 +148,12 @@ cython_debug/
 # Streamlit
 .streamlit/
 
-# Project Specific
+# Project Specific whitelisting
+!pipeline_state.json
+!extracted_media.csv
+!performance_log.txt
+!error_log.txt
+
+# Project Specific ignores
 service_account.json
 transcripts/

@@ -43,7 +43,8 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add -f extracted_media.csv pipeline_state.json performance_log.txt error_log.txt
+          git config --global advice.addIgnoredFile false
+          git add extracted_media.csv pipeline_state.json performance_log.txt error_log.txt
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
