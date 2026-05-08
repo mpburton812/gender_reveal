@@ -37,7 +37,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python extract_media.py --limit 10
+          python extract_media.py --limit 20
 
       - name: Commit and Push Changes
         run: |
