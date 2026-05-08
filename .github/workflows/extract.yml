@@ -1,0 +1,42 @@
+name: Media Extraction Pipeline
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Weekly on Mondays at midnight UTC
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install python-dotenv
+
+      - name: Create service_account.json
+        run: |
+          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > service_account.json
+
+      - name: Run Extraction
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python extract_media.py --limit 10
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add extracted_media.csv pipeline_state.json performance_log.txt error_log.txt
+          git commit -m "Automated Media Update [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+          git push origin main
