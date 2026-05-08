@@ -344,3 +344,22 @@ Google Sheets Sync: SUCCESS
 ---------------------------
 
 2026-05-08 15:04:25,043 - Pipeline execution ended.
+2026-05-08 21:00:34,795 - Starting PIPELINE run (Mode: STANDARD).
+2026-05-08 21:00:39,050 - STEP 1: Scraping episode list...
+2026-05-08 21:00:39,591 - Step 1 Complete: Found 252 episodes.
+2026-05-08 21:00:39,592 - STEP 2: Processing downloads and media extraction...
+2026-05-08 21:10:59,150 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 21:11:01,713 - Step 3 Complete: Google Sheets updated.
+2026-05-08 21:11:01,713 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 21:00:34
+Duration: 0:10:26.918672
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 251
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 21:11:01,713 - Pipeline execution ended.
