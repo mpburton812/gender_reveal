@@ -71,15 +71,8 @@ if df is not None:
         st.link_button("Official Merch Shop", "https://bit.ly/gendermerch", use_container_width=True)
         
         st.markdown("---")
-        st.header("Filters")
-        search_query = st.text_input("Search Media or Guest", "")
-
-        # Multi-select filters
-        seasons = sorted(df['season'].dropna().unique()) if 'season' in df.columns else []
-        selected_seasons = st.multiselect("Season", seasons, default=seasons)
-
-        media_types = sorted(df['media_type'].dropna().unique()) if 'media_type' in df.columns else []
-        selected_types = st.multiselect("Media Type", media_types, default=media_types)
+        st.header("Search")
+        search_query = st.text_input("Find any book, guest, or topic...", "")
 
         st.markdown("---")
         if st.button("Refresh Data", use_container_width=True):
@@ -88,17 +81,12 @@ if df is not None:
 
     # Filtering logic
     filtered_df = df.copy()
-    if 'season' in df.columns:
-        filtered_df = filtered_df[filtered_df['season'].isin(selected_seasons)]
-    if 'media_type' in df.columns:
-        filtered_df = filtered_df[filtered_df['media_type'].isin(selected_types)]
 
     if search_query:
         query = search_query.lower()
-        search_cols = [c for c in ['media_name', 'guest', 'media_sub_category'] if c in df.columns]
-        if search_cols:
-            mask = filtered_df[search_cols].apply(lambda x: x.str.lower().str.contains(query, na=False)).any(axis=1)
-            filtered_df = filtered_df[mask]
+        # Global search across all columns
+        mask = filtered_df.astype(str).apply(lambda x: x.str.lower().str.contains(query, na=False)).any(axis=1)
+        filtered_df = filtered_df[mask]
 
     # Display stats (Global)
     col1, col2, col3 = st.columns(3)
