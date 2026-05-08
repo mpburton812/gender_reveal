@@ -137,6 +137,7 @@ class RSSDataFetcher:
             for item in items:
                 title = item.title.text if item.title else ""
                 pub_date_raw = item.pubDate.text if item.pubDate else ""
+                link = item.link.text if item.link else ""
                 # Use description or content:encoded for show notes
                 show_notes = item.description.text if item.description else ""
                 if not show_notes and item.find('content:encoded'):
@@ -146,7 +147,7 @@ class RSSDataFetcher:
                 date_match = re.search(r'\d{1,2}\s+[A-Za-z]{3}\s+\d{4}', pub_date_raw)
                 pub_date = date_match.group(0) if date_match else pub_date_raw
 
-                data = {"date": pub_date, "show_notes": show_notes}
+                data = {"date": pub_date, "show_notes": show_notes, "link": link}
 
                 # Try to extract episode number
                 num_match = re.search(r'(?:Episode|Epsiode)\s*(\d+\.?\d*)', title, re.IGNORECASE)
@@ -571,9 +572,10 @@ Transcript Text:
             normalized_item['episode_number'] = ep_metadata.get('episode_number')
             normalized_item['episode_name'] = ep_metadata.get('episode_name')
             normalized_item['episode_date'] = ep_metadata.get('episode_date')
+            normalized_item['episode_url'] = ep_metadata.get('episode_url')
             
             # Ensure all expected fields exist
-            for header in ["media_date", "guest", "media_type", "media_sub_category", "media_name", "url_to_media", "mention_context", "image_url"]:
+            for header in ["media_date", "guest", "media_type", "media_sub_category", "media_name", "url_to_media", "mention_context", "image_url", "episode_url"]:
                 if header not in normalized_item:
                     normalized_item[header] = None
 
@@ -686,13 +688,14 @@ class PipelineState:
         headers = [
             "season", "episode_number", "episode_name", "episode_date", "guest",
             "media_type", "media_sub_category", "media_name", "url_to_media", 
-            "media_date", "mention_context", "image_url"
+            "mention_context", "image_url", "episode_url"
         ]
         with open(self.csv_file, 'a', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=headers, extrasaction='ignore')
             if not file_exists:
                 writer.writeheader()
             writer.writerows(data)
+
 
 def sort_dataframe(df):
     """Sorts the dataframe by Season and Episode number numerically."""
@@ -850,6 +853,7 @@ def main():
                 # Attach episode data from RSS
                 rss_data = data_fetcher.get_data(ep['episode_number'], ep['episode_name'])
                 ep['episode_date'] = rss_data['date']
+                ep['episode_url'] = rss_data.get('link')
                 show_notes = rss_data['show_notes']
                 
                 # Create a unique-ish filename

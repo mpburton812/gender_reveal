@@ -62,15 +62,27 @@ df = load_data()
 
 if df is not None:
     # Sidebar Filters
-    st.sidebar.header("Filters")
-    search_query = st.sidebar.text_input("Search Media or Guest", "")
+    with st.sidebar:
+        st.header("Filters")
+        search_query = st.text_input("Search Media or Guest", "")
 
-    # Multi-select filters
-    seasons = sorted(df['season'].dropna().unique()) if 'season' in df.columns else []
-    selected_seasons = st.sidebar.multiselect("Season", seasons, default=seasons)
+        # Multi-select filters
+        seasons = sorted(df['season'].dropna().unique()) if 'season' in df.columns else []
+        selected_seasons = st.multiselect("Season", seasons, default=seasons)
 
-    media_types = sorted(df['media_type'].dropna().unique()) if 'media_type' in df.columns else []
-    selected_types = st.sidebar.multiselect("Media Type", media_types, default=media_types)
+        media_types = sorted(df['media_type'].dropna().unique()) if 'media_type' in df.columns else []
+        selected_types = st.multiselect("Media Type", media_types, default=media_types)
+
+        st.markdown("---")
+        st.markdown("### 💖 Support the Show")
+        st.info("Gender Reveal is a non-profit podcast that relies on listener support.")
+        st.link_button("Join our Patreon", "https://www.patreon.com/gender", use_container_width=True)
+        st.link_button("Official Merch Shop", "https://bit.ly/gendermerch", use_container_width=True)
+        
+        st.markdown("---")
+        if st.button("Refresh Data", use_container_width=True):
+            st.cache_data.clear()
+            st.rerun()
 
     # Filtering logic
     filtered_df = df.copy()
@@ -101,6 +113,7 @@ if df is not None:
             "image_url": st.column_config.ImageColumn("Cover", help="Media Cover Art"),
             "url_to_media": st.column_config.LinkColumn("Link"),
             "episode_number": st.column_config.NumberColumn("Ep #", format="%d"),
+            "episode_url": st.column_config.LinkColumn("Listen to Ep"),
             "mention_context": st.column_config.TextColumn("Context", width="large"),
         },
         hide_index=True,
@@ -128,18 +141,18 @@ if df is not None:
                     st.write(row.get('mention_context', "No context available."))
                     st.caption(f"Mentioned in Ep {row.get('episode_number', '??')}")
                 
+                # Podcast Link
+                if pd.notna(row.get('episode_url')) and row['episode_url']:
+                    st.link_button("🎧 Listen to Episode", row['episode_url'], use_container_width=True)
+
                 # Support / Discovery Links
                 m_type = str(row.get('media_type', '')).lower()
                 m_name = str(row.get('media_name', ''))
                 
                 if 'book' in m_type or 'graphic novel' in m_type:
-                    st.link_button("Buy on Bookshop.org", get_bookshop_link(m_name), type="primary")
+                    st.link_button("🛒 Buy on Bookshop", get_bookshop_link(m_name), use_container_width=True)
                 elif 'movie' in m_type or 'tv show' in m_type:
-                    st.link_button("View on Letterboxd", get_letterboxd_link(m_name), type="primary")
+                    st.link_button("📽️ View on Letterboxd", get_letterboxd_link(m_name), use_container_width=True)
                 
                 if pd.notna(row.get('url_to_media')) and row['url_to_media']:
                     st.caption(f"[Canonical Link]({row['url_to_media']})")
-
-    if st.button("Refresh Data"):
-        st.cache_data.clear()
-        st.rerun()
