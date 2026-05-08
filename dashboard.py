@@ -6,49 +6,53 @@ from streamlit_gsheets import GSheetsConnection
 st.set_page_config(page_title="Gender Reveal Media Explorer", layout="wide")
 
 st.title("Gender Reveal Media Explorer")
-st.markdown("Explore media mentioned in the *Gender Reveal* podcast. Data is live-synced from Google Sheets.")
+st.markdown("Explore media mentioned in the *Gender Reveal* podcast.")
 
 # Load data with caching
-@st.cache_data(ttl=600) # Cache data for 10 minutes
+@st.cache_data(ttl=600)
 def load_data():
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    # Using the Sheet ID from extract_media.py
-    url = "https://docs.google.com/spreadsheets/d/1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU/edit"
-    df = conn.read(spreadsheet=url)
-    
-    # Ensure episode_number is numeric for better sorting
-    if 'episode_number' in df.columns:
-        df['episode_number'] = pd.to_numeric(df['episode_number'], errors='coerce')
-    return df
+    try:
+        conn = st.connection("gsheets", type=GSheetsConnection)
+        url = "https://docs.google.com/spreadsheets/d/1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU/edit"
+        df = conn.read(spreadsheet=url)
+        
+        if df is None or df.empty:
+            st.error("The Google Sheet appears to be empty or unreachable.")
+            return None
 
-try:
-    df = load_data()
+        # Ensure episode_number is numeric
+        if 'episode_number' in df.columns:
+            df['episode_number'] = pd.to_numeric(df['episode_number'], errors='coerce')
+        return df
+    except Exception as e:
+        st.error(f"### Connection Error\n{e}")
+        st.info("""
+        **Troubleshooting Steps:**
+        1. **Share the Sheet:** Open your Google Sheet, click **Share**, and add this email as an **Editor**:
+           `service-account-2@gender-reveal-494314.iam.gserviceaccount.com`
+        2. **Check Secrets:** Ensure your Streamlit Cloud Secrets are formatted correctly (see `streamlit_secrets_template.toml`).
+        3. **Wait 1 minute:** Sometimes Streamlit takes a moment to update secrets.
+        """)
+        return None
 
+df = load_data()
+
+if df is not None:
     # Sidebar Filters
     st.sidebar.header("Filters")
-
-    # Search box
     search_query = st.sidebar.text_input("Search Media or Guest", "")
 
     # Multi-select filters
-    if 'season' in df.columns:
-        seasons = sorted(df['season'].dropna().unique())
-        selected_seasons = st.sidebar.multiselect("Season", seasons, default=seasons)
-    else:
-        selected_seasons = []
+    seasons = sorted(df['season'].dropna().unique()) if 'season' in df.columns else []
+    selected_seasons = st.sidebar.multiselect("Season", seasons, default=seasons)
 
-    if 'media_type' in df.columns:
-        media_types = sorted(df['media_type'].dropna().unique())
-        selected_types = st.sidebar.multiselect("Media Type", media_types, default=media_types)
-    else:
-        selected_types = []
+    media_types = sorted(df['media_type'].dropna().unique()) if 'media_type' in df.columns else []
+    selected_types = st.sidebar.multiselect("Media Type", media_types, default=media_types)
 
     # Filtering logic
     filtered_df = df.copy()
-    
     if 'season' in df.columns:
         filtered_df = filtered_df[filtered_df['season'].isin(selected_seasons)]
-    
     if 'media_type' in df.columns:
         filtered_df = filtered_df[filtered_df['media_type'].isin(selected_types)]
 
@@ -63,29 +67,21 @@ try:
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Mentions", len(filtered_df))
     if 'media_name' in df.columns:
-        col2.metric("Unique Media Items", filtered_df['media_name'].nunique())
+        col2.metric("Unique Items", filtered_df['media_name'].nunique())
     if 'episode_number' in df.columns:
-        col3.metric("Episodes Covered", filtered_df['episode_number'].nunique())
+        col3.metric("Episodes", filtered_df['episode_number'].nunique())
 
     # Data Table
-    column_config = {}
-    if 'url_to_media' in df.columns:
-        column_config["url_to_media"] = st.column_config.LinkColumn("Link")
-    if 'episode_number' in df.columns:
-        column_config["episode_number"] = st.column_config.NumberColumn("Ep #", format="%d")
-
     st.dataframe(
         filtered_df,
-        column_config=column_config,
+        column_config={
+            "url_to_media": st.column_config.LinkColumn("Link"),
+            "episode_number": st.column_config.NumberColumn("Ep #", format="%d"),
+        },
         hide_index=True,
         use_container_width=True
     )
 
-    # Refresh Button
     if st.button("Refresh Data"):
         st.cache_data.clear()
         st.rerun()
-
-except Exception as e:
-    st.error(f"Error connecting to Google Sheets: {e}")
-    st.info("Ensure your Streamlit Secrets are configured correctly with the service account JSON.")
