@@ -7,7 +7,9 @@ import io
 import requests
 import traceback
 import argparse
+import logging
 import pandas as pd
+from datetime import datetime
 from bs4 import BeautifulSoup
 from google import genai
 from google.genai import types
@@ -16,6 +18,10 @@ from google.oauth2.service_account import Credentials
 from typing import List, Dict, Any
 import docx
 import PyPDF2
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # --- CONFIGURATION ---
 URL_LISTEN = "https://www.genderpodcast.com/listen"
@@ -24,9 +30,69 @@ PIPELINE_STATE_FILE = "pipeline_state.json"
 CSV_OUTPUT = "extracted_media.csv"
 GOOGLE_SHEET_ID = "1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU"
 
+# Logging Configuration
+ERROR_LOG = "error_log.txt"
+PERFORMANCE_LOG = "performance_log.txt"
+
 # Gemini API Configuration
-GEMINI_API_KEY = "AIzaSyBZW9eb8Spfa_XxgaBZYWHcKEBId0vWw60"  # User must replace this
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL_NAME = "gemini-2.5-flash" # Current standard for 2026
+
+# ... (rest of configuration unchanged)
+
+# --- LOGGING SETUP ---
+
+def setup_logging():
+    """Configures separate loggers for errors and performance tracking."""
+    # Error Logger (For technical failures and stack traces)
+    error_logger = logging.getLogger('error_logger')
+    error_logger.setLevel(logging.ERROR)
+    if not error_logger.handlers:
+        error_handler = logging.FileHandler(ERROR_LOG, encoding='utf-8')
+        error_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        error_logger.addHandler(error_handler)
+
+    # Performance Logger (For execution summaries and step-by-step progress)
+    perf_logger = logging.getLogger('perf_logger')
+    perf_logger.setLevel(logging.INFO)
+    if not perf_logger.handlers:
+        perf_handler = logging.FileHandler(PERFORMANCE_LOG, encoding='utf-8')
+        perf_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
+        perf_logger.addHandler(perf_handler)
+    
+    return error_logger, perf_logger
+
+error_log, perf_log = setup_logging()
+
+class ExecutionSummary:
+    """Tracks metrics for the performance log."""
+    def __init__(self):
+        self.start_time = datetime.now()
+        self.episodes_found = 0
+        self.episodes_processed = 0
+        self.episodes_skipped = 0
+        self.media_refs_extracted = 0
+        self.errors_encountered = 0
+        self.sync_success = False
+
+    def log_summary(self, perf_logger):
+        duration = datetime.now() - self.start_time
+        summary = (
+            f"\n--- EXECUTION SUMMARY ---\n"
+            f"Run Date: {self.start_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"Duration: {duration}\n"
+            f"Episodes Found: {self.episodes_found}\n"
+            f"Episodes Processed (AI): {self.episodes_processed}\n"
+            f"Episodes Skipped (Already Done): {self.episodes_skipped}\n"
+            f"Total Media Refs Extracted: {self.media_refs_extracted}\n"
+            f"Errors Encountered: {self.errors_encountered}\n"
+            f"Google Sheets Sync: {'SUCCESS' if self.sync_success else 'FAILED/SKIPPED'}\n"
+            f"---------------------------\n"
+        )
+        perf_logger.info(summary)
+        print(summary)
+
+# --- UTILS ---
 
 # Conservative Rate Limiting (Lowered for stability)
 # Flash Free Tier is officially 15 RPM/1M TPM, but we'll use 5/500k for safety with Search.
@@ -393,6 +459,7 @@ Return ONLY a JSON array of objects. Each object MUST use these exact keys:
 - "url_to_media": The canonical URL you found via search (except for "Gender Reveal" items).
 - "guest": The guest for this episode ({ep_metadata.get('guest', 'Unknown')}).
 - "media_date": The release date of the media if mentioned in text, otherwise null.
+- "mention_context": A 1-2 sentence snippet from the transcript explaining WHY this media was mentioned or what was said about it.
 
 Episode Metadata: Season {ep_metadata.get('season')}, Episode {ep_metadata.get('episode_number')}, Name "{ep_metadata.get('episode_name')}".
 
@@ -402,6 +469,7 @@ Show Notes (For context):
 Transcript Text:
 {text[:100000]}
 """
+        # ... (token estimation and Gemini call logic unchanged)
         # Estimate tokens (approx 3 chars per token + safety margin for output)
         estimated_tokens = (len(prompt) // 3) + 2000
         self.rate_limiter.wait_for_capacity(estimated_tokens)
@@ -489,7 +557,7 @@ Transcript Text:
             normalized_item['episode_date'] = ep_metadata.get('episode_date')
             
             # Ensure all expected fields exist
-            for header in ["media_date", "guest", "media_type", "media_sub_category", "media_name", "url_to_media"]:
+            for header in ["media_date", "guest", "media_type", "media_sub_category", "media_name", "url_to_media", "mention_context", "image_url"]:
                 if header not in normalized_item:
                     normalized_item[header] = None
 
@@ -529,7 +597,8 @@ class PipelineState:
         file_exists = os.path.isfile(self.csv_file)
         headers = [
             "season", "episode_number", "episode_name", "episode_date", "guest",
-            "media_type", "media_sub_category", "media_name", "url_to_media", "media_date"
+            "media_type", "media_sub_category", "media_name", "url_to_media", 
+            "media_date", "mention_context", "image_url"
         ]
         with open(self.csv_file, 'a', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=headers, extrasaction='ignore')
@@ -569,6 +638,7 @@ def sync_to_google_sheets(csv_file, service_account_file, sheet_id):
 # --- MAIN ---
 
 def main():
+    summary = ExecutionSummary()
     parser = argparse.ArgumentParser(description="Gender Reveal Media Extraction Pipeline")
     parser.add_argument("--sync-only", action="store_true", help="Only run the Google Sheets synchronization step")
     parser.add_argument("--limit", type=int, help="Limit processing to N *new* episodes")
@@ -579,112 +649,119 @@ def main():
         print("Please set your GEMINI_API_KEY in the script.")
         return
 
-    # Handle sync-only or skip-process early
-    if args.sync_only or args.skip_process:
-        print("\n" + "="*50)
-        print("STEP 3: Synchronizing with Google Sheets (Standalone)")
-        print("="*50)
+    try:
+        # Handle sync-only or skip-process early
+        if args.sync_only or args.skip_process:
+            perf_log.info("Starting STANDALONE SYNC mode.")
+            if os.path.exists(CSV_OUTPUT):
+                try:
+                    sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+                    summary.sync_success = True
+                except Exception as e:
+                    error_log.error(f"Standalone Sync Failed: {e}\n{traceback.format_exc()}")
+                    summary.errors_encountered += 1
+            else:
+                perf_log.info("No local CSV data found to sync.")
+            summary.log_summary(perf_log)
+            return
+
+        perf_log.info("Starting FULL PIPELINE run.")
+        scraper = GenderRevealScraper(TRANSCRIPTS_DIR)
+        extractor = MediaExtractor(GEMINI_API_KEY, TPM_LIMIT, RPM_LIMIT)
+        state = PipelineState(PIPELINE_STATE_FILE, CSV_OUTPUT)
+        data_fetcher = RSSDataFetcher()
+
+        # 1. Scrape episode list
+        perf_log.info("STEP 1: Scraping episode list...")
+        episodes = scraper.scrape_episodes()
+        summary.episodes_found = len(episodes)
+        perf_log.info(f"Step 1 Complete: Found {summary.episodes_found} episodes.")
+
+        # 2. Process episodes
+        perf_log.info("STEP 2: Processing downloads and media extraction...")
+        for i, ep in enumerate(episodes, 1):
+            if args.limit and summary.episodes_processed >= args.limit:
+                perf_log.info(f"Reached limit of {args.limit} episodes. Stopping processing.")
+                break
+
+            progress_prefix = f"[{i}/{summary.episodes_found}]"
+            ep_display_name = f"Ep {ep['episode_number']}: {ep['episode_name']}"
+            
+            try:
+                # Attach episode data from RSS
+                rss_data = data_fetcher.get_data(ep['episode_number'], ep['episode_name'])
+                ep['episode_date'] = rss_data['date']
+                show_notes = rss_data['show_notes']
+                
+                # Create a unique-ish filename
+                safe_name = re.sub(r'[^\w\-_]', '_', ep['episode_name'])[:30]
+                base_filename = f"ep_{ep['episode_number']}_{safe_name}"
+                
+                # Download
+                full_filename = scraper.download_transcript(ep['transcript_url'], base_filename)
+                if not full_filename:
+                    print(f"{progress_prefix} SKIP: Failed to download transcript for {ep_display_name}")
+                    continue
+                    
+                # Extract if not already processed
+                if not state.is_processed(full_filename):
+                    print(f"\n{progress_prefix} PROCESSING: {ep_display_name}")
+                    text = scraper.extract_text(full_filename)
+                    
+                    if not text or len(text.strip()) < 100:
+                        print(f"      WARNING: Transcript content too short. Skipping.")
+                        state.mark_processed(full_filename)
+                        continue
+
+                    print(f"      AI ANALYSIS: Sending to Gemini...")
+                    ep['guest'] = clean_guest_name(ep['episode_name']) 
+                    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+                    
+                    if media_refs:
+                        state.append_to_csv(media_refs)
+                        summary.media_refs_extracted += len(media_refs)
+                        print(f"      SUCCESS: Extracted {len(media_refs)} media references.")
+                    
+                    state.mark_processed(full_filename)
+                    summary.episodes_processed += 1
+                else:
+                    summary.episodes_skipped += 1
+                    if i % 20 == 0: # Periodic progress for skipped items
+                        print(f"{progress_prefix} Skipping already processed episodes...")
+            
+            except Exception as e:
+                error_msg = f"Error processing {ep_display_name}: {e}"
+                print(f"      ERROR: {error_msg}")
+                error_log.error(f"{error_msg}\n{traceback.format_exc()}")
+                summary.errors_encountered += 1
+                continue
+
+        # 3. Final Sync to Google Sheets
+        perf_log.info("STEP 3: Synchronizing with Google Sheets...")
         if os.path.exists(CSV_OUTPUT):
             try:
                 sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+                summary.sync_success = True
+                perf_log.info("Step 3 Complete: Google Sheets updated.")
             except Exception as e:
-                print(f"FAILED to sync to Google Sheets: {e}")
-                traceback.print_exc()
+                error_log.error(f"Sync Failed: {e}\n{traceback.format_exc()}")
+                summary.errors_encountered += 1
         else:
-            print("INFO: No local CSV data found to sync.")
-        return
+            perf_log.info("Step 3 Skipped: No local CSV found.")
 
-    scraper = GenderRevealScraper(TRANSCRIPTS_DIR)
-    extractor = MediaExtractor(GEMINI_API_KEY, TPM_LIMIT, RPM_LIMIT)
-    state = PipelineState(PIPELINE_STATE_FILE, CSV_OUTPUT)
-    data_fetcher = RSSDataFetcher()
+        summary.log_summary(perf_log)
 
-    # 1. Scrape episode list
-    print("\n" + "="*50)
-    print("STEP 1: Scraping episode list from Gender Reveal...")
-    print("="*50)
-    episodes = scraper.scrape_episodes()
-    total_episodes = len(episodes)
-    print(f"\nSUCCESS: Found {total_episodes} episodes with potential transcripts.")
-
-    # 2. Process episodes
-    print("\n" + "="*50)
-    print("STEP 2: Processing downloads and media extraction")
-    print("="*50)
-    
-    processed_count = 0
-    for i, ep in enumerate(episodes, 1):
-        if args.limit and processed_count >= args.limit:
-            print(f"\nINFO: Reached limit of {args.limit} episodes. Stopping processing.")
-            break
-
-        progress_prefix = f"[{i}/{total_episodes}]"
-        ep_display_name = f"Ep {ep['episode_number']}: {ep['episode_name']}"
-        
-        # Attach episode data from RSS
-        rss_data = data_fetcher.get_data(ep['episode_number'], ep['episode_name'])
-        ep['episode_date'] = rss_data['date']
-        show_notes = rss_data['show_notes']
-        
-        # Create a unique-ish filename
-        safe_name = re.sub(r'[^\w\-_]', '_', ep['episode_name'])[:30]
-        base_filename = f"ep_{ep['episode_number']}_{safe_name}"
-        
-        # Download (returns the actual filename with extension)
-        full_filename = scraper.download_transcript(ep['transcript_url'], base_filename)
-        if not full_filename:
-            print(f"{progress_prefix} SKIP: Failed to download transcript for {ep_display_name}")
-            continue
-            
-        # Extract if not already processed
-        if not state.is_processed(full_filename):
-            print(f"\n{progress_prefix} PROCESSING: {ep_display_name}")
-            print(f"      File: {full_filename}")
-            
-            text = scraper.extract_text(full_filename)
-            
-            if not text or len(text.strip()) < 100:
-                print(f"      WARNING: Transcript content too short ({len(text) if text else 0} chars). Skipping AI.")
-                state.mark_processed(full_filename)
-                continue
-
-            print(f"      AI ANALYSIS: Sending {len(text)} characters to Gemini ({GEMINI_MODEL_NAME})...")
-            try:
-                ep['guest'] = clean_guest_name(ep['episode_name']) 
-                media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
-                
-                if media_refs:
-                    state.append_to_csv(media_refs)
-                    print(f"      SUCCESS: Extracted {len(media_refs)} media references.")
-                else:
-                    print(f"      INFO: No media references identified in this transcript.")
-                
-                state.mark_processed(full_filename)
-                processed_count += 1
-                
-            except Exception as e:
-                print(f"      ERROR during AI extraction: {e}")
-                traceback.print_exc()
-                continue
-        else:
-            print(f"{progress_prefix} SKIP: {ep_display_name} already processed.")
-
-    # 3. Final Sync to Google Sheets
-    print("\n" + "="*50)
-    print("STEP 3: Synchronizing with Google Sheets")
-    print("="*50)
-    if os.path.exists(CSV_OUTPUT):
-        try:
-            sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
-        except Exception as e:
-            print(f"FAILED to sync to Google Sheets: {e}")
-            traceback.print_exc()
-    else:
-        print("INFO: No local CSV data found to sync.")
-
-    print("\n" + "="*50)
-    print("PIPELINE COMPLETE")
-    print("="*50)
+    except KeyboardInterrupt:
+        perf_log.info("Process interrupted by user.")
+        print("\nProcess interrupted. Exiting gracefully...")
+    except Exception as e:
+        critical_error = f"CRITICAL PIPELINE FAILURE: {e}"
+        print(f"\n{critical_error}")
+        error_log.error(f"{critical_error}\n{traceback.format_exc()}")
+        perf_log.error("Pipeline failed due to a critical error.")
+        summary.log_summary(perf_log)
+    finally:
+        perf_log.info("Pipeline execution ended.")
 
 if __name__ == "__main__":
     main()

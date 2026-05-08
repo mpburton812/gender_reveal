@@ -69,12 +69,35 @@ if df is not None:
     st.dataframe(
         filtered_df,
         column_config={
+            "image_url": st.column_config.ImageColumn("Cover", help="Media Cover Art"),
             "url_to_media": st.column_config.LinkColumn("Link"),
             "episode_number": st.column_config.NumberColumn("Ep #", format="%d"),
+            "mention_context": st.column_config.TextColumn("Context", width="large"),
         },
         hide_index=True,
         use_container_width=True
     )
+
+    # Detailed Search / Discovery Section
+    st.markdown("---")
+    st.subheader("Media Spotlight")
+    st.info("Click on a row in the table above to see more details, or use the search box to find specific mentions.")
+    
+    # Show detailed cards for the first few items in the filtered list
+    spotlight_count = min(len(filtered_df), 5)
+    if spotlight_count > 0:
+        cols = st.columns(spotlight_count)
+        for i in range(spotlight_count):
+            row = filtered_df.iloc[i]
+            with cols[i]:
+                if pd.notna(row.get('image_url')) and row['image_url']:
+                    st.image(row['image_url'], use_container_width=True)
+                else:
+                    st.markdown(f"**{row['media_name']}**")
+                
+                with st.expander("Why was it mentioned?"):
+                    st.write(row.get('mention_context', "No context available."))
+                    st.caption(f"Mentioned in Ep {row.get('episode_number', '??')}")
 
     if st.button("Refresh Data"):
         st.cache_data.clear()
