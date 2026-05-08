@@ -12,9 +12,9 @@ st.markdown("Explore media mentioned in the *Gender Reveal* podcast.")
 @st.cache_data(ttl=600)
 def load_data():
     try:
+        # The connection will automatically pick up the 'spreadsheet' and 'service_account' from secrets
         conn = st.connection("gsheets", type=GSheetsConnection)
-        url = "https://docs.google.com/spreadsheets/d/1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU/edit"
-        df = conn.read(spreadsheet=url)
+        df = conn.read()
         
         if df is None or df.empty:
             st.error("The Google Sheet appears to be empty or unreachable.")
@@ -30,8 +30,7 @@ def load_data():
         **Troubleshooting Steps:**
         1. **Share the Sheet:** Open your Google Sheet, click **Share**, and add this email as an **Editor**:
            `service-account-2@gender-reveal-494314.iam.gserviceaccount.com`
-        2. **Check Secrets:** Ensure your Streamlit Cloud Secrets are formatted correctly (see `streamlit_secrets_template.toml`).
-        3. **Wait 1 minute:** Sometimes Streamlit takes a moment to update secrets.
+        2. **Check Secrets:** Ensure your Streamlit Cloud Secrets match the format in `streamlit_secrets_template.toml`.
         """)
         return None
 
