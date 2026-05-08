@@ -149,7 +149,6 @@ cython_debug/
 .streamlit/
 
 # Project Specific whitelisting
-!pipeline_state.json
 !extracted_media.csv
 !performance_log.txt
 !error_log.txt

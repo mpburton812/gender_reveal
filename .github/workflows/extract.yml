@@ -44,10 +44,20 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git config --global advice.addIgnoredFile false
+          echo "Current status before staging:"
           git status
-          git add -f extracted_media.csv pipeline_state.json performance_log.txt error_log.txt
+          
+          # Force add files individually to see which one fails
+          git add -f pipeline_state.json
+          git add -f extracted_media.csv
+          git add -f performance_log.txt
+          git add -f error_log.txt
+          
+          echo "Status after force staging:"
+          git status
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "No changes detected to commit."
           else
             git commit -m "Automated Media Update [$(date +'%Y-%m-%d')]"
             git push origin main
