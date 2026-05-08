@@ -1,0 +1,95 @@
+2026-05-08 10:10:45,273 - Starting FULL PIPELINE run.
+2026-05-08 10:10:47,084 - STEP 1: Scraping episode list...
+2026-05-08 10:10:47,713 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:10:47,713 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:10:47,727 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:10:50,249 - Step 3 Complete: Google Sheets updated.
+2026-05-08 10:10:50,249 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:10:45
+Duration: 0:00:04.976773
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 252
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 10:10:50,249 - Pipeline execution ended.
+2026-05-08 10:18:25,007 - Starting FULL PIPELINE run.
+2026-05-08 10:18:27,057 - STEP 1: Scraping episode list...
+2026-05-08 10:18:27,397 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:18:27,397 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:18:27,406 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:18:29,728 - Step 3 Complete: Google Sheets updated.
+2026-05-08 10:18:29,728 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:18:25
+Duration: 0:00:04.722091
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 252
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 10:18:29,729 - Pipeline execution ended.
+2026-05-08 10:18:44,678 - Starting FULL PIPELINE run.
+2026-05-08 10:18:46,229 - STEP 1: Scraping episode list...
+2026-05-08 10:18:46,611 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:18:46,611 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:18:47,028 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:18:48,932 - Step 3 Complete: Google Sheets updated.
+2026-05-08 10:18:48,932 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:18:44
+Duration: 0:00:04.254386
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 251
+Total Media Refs Extracted: 0
+Errors Encountered: 1
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 10:18:48,932 - Pipeline execution ended.
+2026-05-08 10:28:21,767 - Starting FULL PIPELINE run.
+2026-05-08 10:28:23,556 - STEP 1: Scraping episode list...
+2026-05-08 10:28:23,890 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:28:23,890 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:29:10,868 - Reached limit of 1 episodes. Stopping processing.
+2026-05-08 10:29:10,868 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:29:12,053 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:28:21
+Duration: 0:00:50.287190
+Episodes Found: 252
+Episodes Processed (AI): 1
+Episodes Skipped (Already Done): 4
+Total Media Refs Extracted: 15
+Errors Encountered: 1
+Google Sheets Sync: FAILED/SKIPPED
+---------------------------
+
+2026-05-08 10:29:12,054 - Pipeline execution ended.
+2026-05-08 10:29:39,230 - Starting FULL PIPELINE run.
+2026-05-08 10:29:41,708 - STEP 1: Scraping episode list...
+2026-05-08 10:29:42,049 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:29:42,049 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:29:42,058 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:29:44,560 - Step 3 Complete: Google Sheets updated.
+2026-05-08 10:29:44,560 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:29:39
+Duration: 0:00:05.330489
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 252
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 10:29:44,560 - Pipeline execution ended.

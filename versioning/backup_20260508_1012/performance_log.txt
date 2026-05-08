@@ -1,0 +1,19 @@
+2026-05-08 10:10:45,273 - Starting FULL PIPELINE run.
+2026-05-08 10:10:47,084 - STEP 1: Scraping episode list...
+2026-05-08 10:10:47,713 - Step 1 Complete: Found 252 episodes.
+2026-05-08 10:10:47,713 - STEP 2: Processing downloads and media extraction...
+2026-05-08 10:10:47,727 - STEP 3: Synchronizing with Google Sheets...
+2026-05-08 10:10:50,249 - Step 3 Complete: Google Sheets updated.
+2026-05-08 10:10:50,249 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-08 10:10:45
+Duration: 0:00:04.976773
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 252
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Google Sheets Sync: SUCCESS
+---------------------------
+
+2026-05-08 10:10:50,249 - Pipeline execution ended.
