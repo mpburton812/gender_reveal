@@ -7,3 +7,4 @@ google-auth
 python-docx
 PyPDF2
 streamlit
+st-gsheets-connection
