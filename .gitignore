@@ -150,5 +150,4 @@ cython_debug/
 
 # Project Specific
 service_account.json
-pipeline_state.json
 transcripts/
