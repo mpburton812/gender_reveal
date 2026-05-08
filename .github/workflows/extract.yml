@@ -39,6 +39,25 @@ jobs:
         run: |
           python extract_media.py --limit 20
 
+      - name: Prepare Email Summary
+        if: always()
+        run: |
+          # Extract the last summary block from the performance log
+          sed -n '/--- EXECUTION SUMMARY ---/,$p' performance_log.txt > current_summary.txt
+
+      - name: Send Summary Email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Gender Reveal Media Pipeline: $(date +'%Y-%m-%d') Update"
+          to: mpburton@gmail.com
+          from: Gender Reveal Automation <mpburton@gmail.com>
+          body: file://current_summary.txt
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "GitHub Action"
