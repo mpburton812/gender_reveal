@@ -107,7 +107,7 @@ if df is not None:
         col3.metric("Episodes", filtered_df['episode_number'].nunique())
 
     # --- TABS ---
-    tab1, tab2, tab3 = st.tabs(["🎙️ All Mentions Feed", "🖼️ Visual Gallery", "📚 Community Favorites"])
+    tab1, tab2, tab3 = st.tabs(["🎙️ Episode Media References", "🖼️ Visual Gallery", "📚 Most Mentioned Media"])
 
     with tab1:
         # Data Table (Existing)
@@ -165,7 +165,7 @@ if df is not None:
                                     st.link_button("📽️ View", get_letterboxd_link(m_name), use_container_width=True)
 
     with tab3:
-        st.subheader("Most Recommended Media")
+        st.subheader("Most Mentioned Media")
         st.markdown("Items grouped by popularity across all selected episodes.")
         
         if not filtered_df.empty:
