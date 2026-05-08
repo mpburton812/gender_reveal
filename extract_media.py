@@ -458,7 +458,6 @@ Return ONLY a JSON array of objects. Each object MUST use these exact keys:
 - "media_name": The title or name of the work.
 - "url_to_media": The canonical URL you found via search (except for "Gender Reveal" items).
 - "guest": The guest for this episode ({ep_metadata.get('guest', 'Unknown')}).
-- "media_date": The release date of the media if mentioned in text, otherwise null.
 - "mention_context": A 1-2 sentence snippet from the transcript explaining WHY this media was mentioned or what was said about it.
 
 Episode Metadata: Season {ep_metadata.get('season')}, Episode {ep_metadata.get('episode_number')}, Name "{ep_metadata.get('episode_name')}".
@@ -567,6 +566,58 @@ Transcript Text:
             
         return final_results
 
+# --- ENRICHMENT (Cover Art) ---
+
+class MediaEnricher:
+    """Fetches cover art and posters from various free APIs."""
+    
+    def fetch_image(self, media_name: str, media_type: str) -> str:
+        """Determines which API to use based on media type."""
+        if not media_name or media_name.lower() == "unknown":
+            return None
+            
+        m_type = media_type.lower()
+        if 'book' in m_type or 'graphic novel' in m_type:
+            return self._fetch_book_cover(media_name)
+        elif 'podcast' in m_type or 'music' in m_type:
+            return self._fetch_itunes_art(media_name)
+        elif 'movie' in m_type or 'tv show' in m_type:
+            return self._fetch_itunes_art(media_name, entity='movie' if 'movie' in m_type else 'tvShow')
+        return None
+
+    def _fetch_book_cover(self, title: str) -> str:
+        """Uses Open Library Search API to find a book cover."""
+        try:
+            # Open Library is very rate-limited, so we use a small delay
+            time.sleep(0.5)
+            url = f"https://openlibrary.org/search.json?title={requests.utils.quote(title)}&limit=1"
+            res = requests.get(url, timeout=10)
+            if res.status_code == 200:
+                data = res.json()
+                if data.get('docs'):
+                    cover_i = data['docs'][0].get('cover_i')
+                    if cover_i:
+                        return f"https://covers.openlibrary.org/b/id/{cover_i}-M.jpg"
+        except:
+            pass
+        return None
+
+    def _fetch_itunes_art(self, name: str, entity='podcast') -> str:
+        """Uses iTunes Search API for podcasts, music, and movies."""
+        try:
+            url = f"https://itunes.apple.com/search?term={requests.utils.quote(name)}&entity={entity}&limit=1"
+            res = requests.get(url, timeout=10)
+            if res.status_code == 200:
+                data = res.json()
+                if data.get('results'):
+                    # Use a larger version of the artwork (600x600 instead of 100x100)
+                    art_url = data['results'][0].get('artworkUrl100')
+                    if art_url:
+                        return art_url.replace('100x100bb', '600x600bb')
+        except:
+            pass
+        return None
+
 # --- STATE MANAGEMENT ---
 
 class PipelineState:
@@ -593,6 +644,26 @@ class PipelineState:
             self.state["processed_files_ledger"].append(filename)
             self.save_state()
 
+    def remove_episode_from_csv(self, episode_number):
+        """Removes all rows for a specific episode number to prepare for a backfill."""
+        if not os.path.exists(self.csv_file):
+            return
+        
+        try:
+            df = pd.read_csv(self.csv_file)
+            # Ensure episode_number is treated as string for comparison
+            df['episode_number'] = df['episode_number'].astype(str)
+            target_ep = str(episode_number)
+            
+            initial_count = len(df)
+            df = df[df['episode_number'] != target_ep]
+            
+            if len(df) < initial_count:
+                df.to_csv(self.csv_file, index=False)
+                print(f"      CLEANUP: Removed {initial_count - len(df)} old entries for Episode {episode_number}")
+        except Exception as e:
+            print(f"      WARNING: Could not clean CSV for backfill: {e}")
+
     def append_to_csv(self, data: List[Dict]):
         file_exists = os.path.isfile(self.csv_file)
         headers = [
@@ -605,6 +676,24 @@ class PipelineState:
             if not file_exists:
                 writer.writeheader()
             writer.writerows(data)
+
+def sort_dataframe(df):
+    """Sorts the dataframe by Season and Episode number numerically."""
+    def extract_num(val):
+        if pd.isna(val) or val == "": return 0
+        match = re.search(r'(\d+)', str(val))
+        if match: return float(match.group(1))
+        # Handle "Bonus" episodes by placing them at the end of the season
+        if "bonus" in str(val).lower(): return 999.0 
+        return 0
+
+    df['season_sort'] = df['season'].apply(extract_num)
+    df['ep_sort'] = df['episode_number'].apply(extract_num)
+    
+    # Sort and then drop the helper columns
+    df = df.sort_values(by=['season_sort', 'ep_sort'], ascending=[True, True])
+    df = df.drop(columns=['season_sort', 'ep_sort'])
+    return df
 
 # --- GOOGLE SHEETS ---
 
@@ -629,6 +718,11 @@ def sync_to_google_sheets(csv_file, service_account_file, sheet_id):
         print("CSV is empty, nothing to sync.")
         return
 
+    # Sort before syncing
+    df = sort_dataframe(df)
+    # Save the sorted version back to CSV as well
+    df.to_csv(csv_file, index=False)
+
     data = [df.columns.values.tolist()] + df.values.tolist()
     
     sheet.clear()
@@ -641,17 +735,58 @@ def main():
     summary = ExecutionSummary()
     parser = argparse.ArgumentParser(description="Gender Reveal Media Extraction Pipeline")
     parser.add_argument("--sync-only", action="store_true", help="Only run the Google Sheets synchronization step")
-    parser.add_argument("--limit", type=int, help="Limit processing to N *new* episodes")
+    parser.add_argument("--limit", type=int, help="Limit processing to N episodes")
     parser.add_argument("--skip-process", action="store_true", help="Skip scraping and AI processing, just sync if CSV exists")
+    parser.add_argument("--backfill", action="store_true", help="Re-process episodes even if they are in the ledger (to fill in missing context)")
+    parser.add_argument("--enrich", action="store_true", help="Fetch missing cover art for existing records in the CSV")
     args = parser.parse_args()
 
-    if GEMINI_API_KEY == "YOUR_GEMINI_API_KEY_HERE":
-        print("Please set your GEMINI_API_KEY in the script.")
+    if not GEMINI_API_KEY:
+        print("Please set your GEMINI_API_KEY in the .env file.")
         return
 
     try:
-        # Handle sync-only or skip-process early
-        if args.sync_only or args.skip_process:
+        # 0. Optional Enrichment Mode
+        if args.enrich:
+            perf_log.info("Starting ENRICHMENT mode (Cover Art Lookup).")
+            if os.path.exists(CSV_OUTPUT):
+                enricher = MediaEnricher()
+                # Load CSV and fill NaN with empty string to avoid issues
+                df = pd.read_csv(CSV_OUTPUT).fillna("")
+                
+                # Find rows missing image_url
+                mask = (df['image_url'] == "")
+                missing_count = mask.sum()
+                
+                if missing_count > 0:
+                    print(f"Found {missing_count} records missing cover art. Fetching...")
+                    processed = 0
+                    for idx, row in df[mask].iterrows():
+                        if args.limit and processed >= args.limit:
+                            break
+                            
+                        print(f"  [{processed+1}/{missing_count}] Fetching cover for: {row['media_name']} ({row['media_type']})")
+                        img_url = enricher.fetch_image(row['media_name'], row['media_type'])
+                        if img_url:
+                            df.at[idx, 'image_url'] = img_url
+                            print(f"    SUCCESS: {img_url}")
+                        processed += 1
+                        
+                    df.to_csv(CSV_OUTPUT, index=False)
+                    perf_log.info(f"Enrichment complete. Updated {processed} records.")
+                else:
+                    perf_log.info("No records found missing cover art.")
+            else:
+                perf_log.info("No CSV found to enrich.")
+            
+            # If ONLY doing enrichment, sync and exit
+            if args.skip_process or args.sync_only:
+                sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+                summary.log_summary(perf_log)
+                return
+
+        # Handle sync-only early
+        if args.sync_only:
             perf_log.info("Starting STANDALONE SYNC mode.")
             if os.path.exists(CSV_OUTPUT):
                 try:
@@ -665,9 +800,10 @@ def main():
             summary.log_summary(perf_log)
             return
 
-        perf_log.info("Starting FULL PIPELINE run.")
+        perf_log.info(f"Starting PIPELINE run (Mode: {'BACKFILL' if args.backfill else 'STANDARD'}).")
         scraper = GenderRevealScraper(TRANSCRIPTS_DIR)
         extractor = MediaExtractor(GEMINI_API_KEY, TPM_LIMIT, RPM_LIMIT)
+        enricher = MediaEnricher()
         state = PipelineState(PIPELINE_STATE_FILE, CSV_OUTPUT)
         data_fetcher = RSSDataFetcher()
 
@@ -703,9 +839,15 @@ def main():
                     print(f"{progress_prefix} SKIP: Failed to download transcript for {ep_display_name}")
                     continue
                     
-                # Extract if not already processed
-                if not state.is_processed(full_filename):
-                    print(f"\n{progress_prefix} PROCESSING: {ep_display_name}")
+                # Extract if not already processed OR if backfilling
+                already_done = state.is_processed(full_filename)
+                if not already_done or args.backfill:
+                    if already_done:
+                        print(f"\n{progress_prefix} BACKFILLING CONTEXT: {ep_display_name}")
+                        state.remove_episode_from_csv(ep['episode_number'])
+                    else:
+                        print(f"\n{progress_prefix} PROCESSING: {ep_display_name}")
+                    
                     text = scraper.extract_text(full_filename)
                     
                     if not text or len(text.strip()) < 100:
@@ -718,9 +860,14 @@ def main():
                     media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
                     
                     if media_refs:
+                        # NEW: Automatically enrich new references with cover art
+                        print(f"      ENRICHMENT: Fetching cover art for {len(media_refs)} items...")
+                        for m in media_refs:
+                            m['image_url'] = enricher.fetch_image(m['media_name'], m['media_type'])
+                        
                         state.append_to_csv(media_refs)
                         summary.media_refs_extracted += len(media_refs)
-                        print(f"      SUCCESS: Extracted {len(media_refs)} media references.")
+                        print(f"      SUCCESS: Extracted and enriched {len(media_refs)} media references.")
                     
                     state.mark_processed(full_filename)
                     summary.episodes_processed += 1

@@ -23,6 +23,22 @@ def load_data():
 
         if 'episode_number' in df.columns:
             df['episode_number'] = pd.to_numeric(df['episode_number'], errors='coerce')
+        
+        # Numeric sort for Season and Episode
+        def extract_num(val):
+            if pd.isna(val) or val == "": return 0
+            import re
+            match = re.search(r'(\d+)', str(val))
+            if match: return float(match.group(1))
+            if "bonus" in str(val).lower(): return 999.0
+            return 0
+
+        if 'season' in df.columns and 'episode_number' in df.columns:
+            df['season_sort'] = df['season'].apply(extract_num)
+            df['ep_sort'] = df['episode_number'].apply(extract_num)
+            df = df.sort_values(by=['season_sort', 'ep_sort'], ascending=[True, True])
+            df = df.drop(columns=['season_sort', 'ep_sort'])
+            
         return df
     except Exception as e:
         st.error(f"### Connection Error\n{e}")
