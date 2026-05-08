@@ -12,7 +12,17 @@ st.markdown("Explore media mentioned in the *Gender Reveal* podcast.")
 @st.cache_data(ttl=600)
 def load_data():
     try:
-        # The connection will automatically pick up the 'spreadsheet' and 'service_account' from secrets
+        # Check if secrets exist
+        if "connections" not in st.secrets or "gsheets" not in st.secrets.connections:
+            st.error("Secrets for 'gsheets' not found. Please check your Streamlit Cloud Secrets.")
+            return None
+            
+        # Get email for debugging
+        creds = st.secrets.connections.gsheets
+        email = creds.get("client_email") or creds.get("service_account", {}).get("client_email")
+        
+        st.write(f"**Debug:** Attempting connection using: `{email}`")
+        
         conn = st.connection("gsheets", type=GSheetsConnection)
         df = conn.read()
         
@@ -20,17 +30,25 @@ def load_data():
             st.error("The Google Sheet appears to be empty or unreachable.")
             return None
 
-        # Ensure episode_number is numeric
         if 'episode_number' in df.columns:
             df['episode_number'] = pd.to_numeric(df['episode_number'], errors='coerce')
         return df
     except Exception as e:
         st.error(f"### Connection Error\n{e}")
-        st.info("""
+        
+        # Try to extract the email again for the error message
+        try:
+            creds = st.secrets.connections.gsheets
+            email = creds.get("client_email") or creds.get("service_account", {}).get("client_email")
+        except:
+            email = "the service account email"
+
+        st.info(f"""
         **Troubleshooting Steps:**
-        1. **Share the Sheet:** Open your Google Sheet, click **Share**, and add this email as an **Editor**:
-           `service-account-2@gender-reveal-494314.iam.gserviceaccount.com`
-        2. **Check Secrets:** Ensure your Streamlit Cloud Secrets match the format in `streamlit_secrets_template.toml`.
+        1. **Check Sharing:** Ensure your Google Sheet is shared with:  
+           `{email}`  
+           (Set to **Editor**)
+        2. **Check Key Format:** Ensure your `private_key` in Secrets has actual line breaks (see `streamlit_secrets_template.toml`).
         """)
         return None
 
