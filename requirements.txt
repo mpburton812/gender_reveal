@@ -8,3 +8,5 @@ python-docx
 PyPDF2
 streamlit
 st-gsheets-connection
+python-dotenv
+lxml
