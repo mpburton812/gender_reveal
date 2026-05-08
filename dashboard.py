@@ -13,6 +13,7 @@ st.markdown("Explore media mentioned in the *Gender Reveal* podcast.")
 def load_data():
     try:
         # Simplest possible connection
+        # It will automatically find [connections.gsheets] in secrets
         conn = st.connection("gsheets", type=GSheetsConnection)
         df = conn.read()
         
@@ -25,11 +26,7 @@ def load_data():
         return df
     except Exception as e:
         st.error(f"### Connection Error\n{e}")
-        st.info("""
-        **Troubleshooting:**
-        1. Ensure your Google Sheet is **Shared** with the `client_email` found in your `service_account.json` (as an Editor).
-        2. Ensure your Streamlit Cloud Secrets match the format in `streamlit_secrets_template.toml`.
-        """)
+        st.info("Check your Streamlit Cloud Secrets against `streamlit_secrets_template.toml` and ensure the Sheet is Shared with your service account email.")
         return None
 
 df = load_data()
