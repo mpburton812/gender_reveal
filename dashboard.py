@@ -107,9 +107,10 @@ if df is not None:
         col3.metric("Episodes", filtered_df['episode_number'].nunique())
 
     # --- TABS ---
-    tab1, tab2 = st.tabs(["📚 Community Favorites", "🎙️ All Mentions Feed"])
+    tab1, tab2, tab3 = st.tabs(["📚 Community Favorites", "🖼️ Visual Gallery", "🎙️ All Mentions Feed"])
 
     with tab1:
+        # ... (Community Favorites logic unchanged)
         st.subheader("Most Recommended Media")
         st.markdown("Items grouped by popularity across all selected episodes.")
         
@@ -138,6 +139,41 @@ if df is not None:
             )
 
     with tab2:
+        st.subheader("Media Library")
+        st.markdown("A visual collection of media mentioned on the show.")
+        
+        # Only show items that have images for the gallery
+        gallery_df = filtered_df[filtered_df['image_url'].notna() & (filtered_df['image_url'] != "")]
+        
+        if gallery_df.empty:
+            st.info("No media with cover art found in the current selection. Try running an enrichment batch or selecting different filters.")
+        else:
+            # Create a responsive grid (4 columns on wide screens)
+            cols_per_row = 4
+            for i in range(0, len(gallery_df), cols_per_row):
+                cols = st.columns(cols_per_row)
+                for j in range(cols_per_row):
+                    if i + j < len(gallery_df):
+                        item = gallery_df.iloc[i + j]
+                        with cols[j]:
+                            st.image(item['image_url'], use_container_width=True)
+                            st.markdown(f"**{item['media_name']}**")
+                            st.caption(f"{item['media_type'].title()} • Ep {item['episode_number']}")
+                            
+                            with st.expander("Details"):
+                                st.write(item.get('mention_context', "No context available."))
+                                if pd.notna(item.get('episode_url')) and item['episode_url']:
+                                    st.link_button("🎧 Listen", item['episode_url'], use_container_width=True)
+                                
+                                # Support Links
+                                m_type = str(item.get('media_type', '')).lower()
+                                m_name = str(item.get('media_name', ''))
+                                if 'book' in m_type or 'graphic novel' in m_type:
+                                    st.link_button("🛒 Buy", get_bookshop_link(m_name), use_container_width=True)
+                                elif 'movie' in m_type or 'tv show' in m_type:
+                                    st.link_button("📽️ View", get_letterboxd_link(m_name), use_container_width=True)
+
+    with tab3:
         # Data Table (Existing)
         st.dataframe(
             filtered_df,
