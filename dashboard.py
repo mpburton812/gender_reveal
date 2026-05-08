@@ -1,6 +1,19 @@
 import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
+import urllib.parse
+
+# --- UTILS ---
+
+def get_bookshop_link(title):
+    """Generates a search link for Bookshop.org."""
+    query = urllib.parse.quote(title)
+    return f"https://bookshop.org/search?keywords={query}"
+
+def get_letterboxd_link(title):
+    """Generates a search link for Letterboxd."""
+    query = urllib.parse.quote(title)
+    return f"https://letterboxd.com/search/{query}/"
 
 # Page configuration
 st.set_page_config(page_title="Gender Reveal Media Explorer", layout="wide")
@@ -114,6 +127,18 @@ if df is not None:
                 with st.expander("Why was it mentioned?"):
                     st.write(row.get('mention_context', "No context available."))
                     st.caption(f"Mentioned in Ep {row.get('episode_number', '??')}")
+                
+                # Support / Discovery Links
+                m_type = str(row.get('media_type', '')).lower()
+                m_name = str(row.get('media_name', ''))
+                
+                if 'book' in m_type or 'graphic novel' in m_type:
+                    st.link_button("Buy on Bookshop.org", get_bookshop_link(m_name), type="primary")
+                elif 'movie' in m_type or 'tv show' in m_type:
+                    st.link_button("View on Letterboxd", get_letterboxd_link(m_name), type="primary")
+                
+                if pd.notna(row.get('url_to_media')) and row['url_to_media']:
+                    st.caption(f"[Canonical Link]({row['url_to_media']})")
 
     if st.button("Refresh Data"):
         st.cache_data.clear()
