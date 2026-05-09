@@ -4,6 +4,16 @@ on:
   schedule:
     - cron: '0 0 * * *' # Daily at midnight UTC
   workflow_dispatch:      # Manual trigger
+    inputs:
+      limit:
+        description: 'Number of episodes to process (e.g., 252 for entire history)'
+        required: true
+        default: '20'
+      backfill:
+        description: 'Check this to re-process and enrich existing episodes'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,7 +47,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python extract_media.py --limit 20
+          LIMIT="${{ github.event.inputs.limit || '20' }}"
+          BACKFILL="${{ github.event.inputs.backfill == 'true' && '--backfill' || '' }}"
+          python extract_media.py --limit $LIMIT $BACKFILL
 
       - name: Prepare Email Summary
         if: always()
