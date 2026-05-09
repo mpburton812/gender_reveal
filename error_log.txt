@@ -116,3 +116,2353 @@ Traceback (most recent call last):
 pandas.errors.ParserError: Error tokenizing data. C error: Expected 11 fields in line 2930, saw 12
 
 
+2026-05-09 07:06:45,222 - ERROR - Error processing Ep 188: Whit Washington: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:07:50,575 - ERROR - Error processing Ep Bonus: Mal Blum’s villain era: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:08:56,202 - ERROR - Error processing Ep 189: Morgan Bassichis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:10:01,463 - ERROR - Error processing Ep Bonus: Kani Lapuerta: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:11:07,044 - ERROR - Error processing Ep 190: Isa Noyola: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:12:12,367 - ERROR - Error processing Ep Bonus: Denne Michele Norris: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:13:18,277 - ERROR - Error processing Ep 191: Zefyr Lisowski: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:14:23,863 - ERROR - Error processing Ep Bonus: Cassius Adair + new book tour stops: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:15:29,860 - ERROR - Error processing Ep 192: Ceyenne Doroshow: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:16:33,076 - ERROR - Error processing Ep 192: Ceyenne Doroshow: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:17:39,074 - ERROR - Error processing Ep Bonus: Lee Lai: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:18:44,853 - ERROR - Error processing Ep Bonus: Alma Avalle: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:19:50,750 - ERROR - Error processing Ep 194: Megan Milks: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:20:56,434 - ERROR - Error processing Ep Bonus: Jess Darrow: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:22:01,746 - ERROR - Error processing Ep Bonus: Trans Day of Snack 2026: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:23:07,415 - ERROR - Error processing Ep 197: QueerSouf segment transcript: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:24:13,086 - ERROR - Error processing Ep 198: Better Practices Policy Project segment transcript: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:25:18,571 - ERROR - Error processing Ep 176: Susan Stryker: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:26:24,300 - ERROR - Error processing Ep 177: Reo Eveleth: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:27:29,731 - ERROR - Error processing Ep Bonus: Emma Specter: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:28:35,343 - ERROR - Error processing Ep 178: Yvie Oddly: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:29:41,221 - ERROR - Error processing Ep 179: Colby Gordon: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:30:46,590 - ERROR - Error processing Ep Bonus: Katherine Packert Burke: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:31:52,072 - ERROR - Error processing Ep 180: River Gallo: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:32:57,395 - ERROR - Error processing Ep Bonus: Rani Som: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:34:02,775 - ERROR - Error processing Ep Bonus: Advice with Producer Ozzy: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:35:08,636 - ERROR - Error processing Ep 181: Checking in with Dean Spade: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:36:14,128 - ERROR - Error processing Ep Bonus: Sunny Zimmerman: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:37:19,806 - ERROR - Error processing Ep 182: Devin Myers: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:38:25,584 - ERROR - Error processing Ep 183: Vera Blossom: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:39:30,991 - ERROR - Error processing Ep Bonus: Yaffa: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:40:36,417 - ERROR - Error processing Ep Bonus: Trans Day of Snack with Jerika Che: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:41:41,878 - ERROR - Error processing Ep 184: Talia Mae Bettcher: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:42:47,315 - ERROR - Error processing Ep Bonus: Jeanne Thornton: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:43:53,150 - ERROR - Error processing Ep 185: Caro De Robertis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:44:58,667 - ERROR - Error processing Ep Bonus: Mckenzee Griffler + Tuck AMA: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:46:04,166 - ERROR - Error processing Ep 186: Harron Walker: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:47:09,888 - ERROR - Error processing Ep 187: Alison Bechdel: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:48:15,310 - ERROR - Error processing Ep Bonus: Sawyer K. Kemp: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:49:20,998 - ERROR - Error processing Ep 161: Lamya H: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:50:26,575 - ERROR - Error processing Ep 162: Salimatu Amabebe: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:51:32,292 - ERROR - Error processing Ep 163: Cassius Adair: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:52:37,888 - ERROR - Error processing Ep 164: Shuli Branson: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:53:43,887 - ERROR - Error processing Ep Bonus: A Tribute to Cecilia Gentili: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:54:49,441 - ERROR - Error processing Ep 165: Lucy Sante: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:55:55,109 - ERROR - Error processing Ep 166: Ariana Steele: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:57:00,680 - ERROR - Error processing Ep 167: Shing Yin Khor: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:58:06,120 - ERROR - Error processing Ep 168: Fola Francis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 07:59:11,616 - ERROR - Error processing Ep 169: Liz Fong-Jones: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:00:17,452 - ERROR - Error processing Ep 170: Jamie Lauren Keiles: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:01:22,879 - ERROR - Error processing Ep Bonus: Trans Day of Snack 2024 + Abolishing Time w/ Shuli Branson: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:02:28,420 - ERROR - Error processing Ep 171: Yin Q: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:03:33,740 - ERROR - Error processing Ep Bonus: “The Prospects” Opening Day with KT Hoffman: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:04:39,444 - ERROR - Error processing Ep 172: Checking in with Jerika Che: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:05:45,310 - ERROR - Error processing Ep 173: 17 Advice Questions with Mckenzee Griffler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:06:50,739 - ERROR - Error processing Ep Bonus: Checking in with LittlePuss Press: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:07:56,205 - ERROR - Error processing Ep 174: Jane Schoenbrun: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:09:01,889 - ERROR - Error processing Ep 175: Checking in with Jules Gill-Peterson: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:10:07,358 - ERROR - Error processing Ep Bonus: Lammys, Labor Solidarity & Arlie Adlington: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:11:12,851 - ERROR - Error processing Ep Bonus: Solomon J. Brager: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:12:18,558 - ERROR - Error processing Ep 147: A.: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:13:30,446 - ERROR - Error processing Ep Bonus: High-Fiving Mattie Lubchansky through Keith Haring’s Irreversible Damage Hole: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:14:35,892 - ERROR - Error processing Ep Bonus: Sandy Stone w/ Sarah Esocoff: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:15:52,563 - ERROR - Error processing Ep 155: Checking in with Soleil Ho: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:16:58,183 - ERROR - Error processing Ep 156: Casey Plett: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:18:03,671 - ERROR - Error processing Ep 157: SPEED/READING Live!: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:19:09,230 - ERROR - Error processing Ep 158: Chiquitita: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:20:14,670 - ERROR - Error processing Ep 159: Alison Rumfitt: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:21:20,215 - ERROR - Error processing Ep 160: Raquel Willis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:22:25,718 - ERROR - Error processing Ep Bonus: Making Podcasts for Trans People: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:23:31,071 - ERROR - Error processing Ep Bonus: Rax Will is one of the guys: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:24:39,034 - ERROR - Error processing Ep 132: Howie Echo-Hawk: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:25:44,489 - ERROR - Error processing Ep 133: A: Spencer from Starbucks Workers United: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:27:28,685 - ERROR - Error processing Ep 134: Wo Chan: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:28:34,335 - ERROR - Error processing Ep 135: Joan Summers: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:29:39,998 - ERROR - Error processing Ep 136: Sabrina Imbler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:30:46,083 - ERROR - Error processing Ep 137: Dean Spade: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:31:51,632 - ERROR - Error processing Ep 138: Lehuauakea: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:32:57,413 - ERROR - Error processing Ep 139: Alynda Segarra: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:34:03,331 - ERROR - Error processing Ep 140: Margaret Killjoy: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:35:09,040 - ERROR - Error processing Ep 141: Renée Yoxon: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:36:14,734 - ERROR - Error processing Ep 142: Lily Zheng: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:37:20,206 - ERROR - Error processing Ep 143: maia arson crimew: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:38:25,878 - ERROR - Error processing Ep 144: Mckenzee Griffler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:39:31,550 - ERROR - Error processing Ep 145: Live at the Bell House: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:40:37,099 - ERROR - Error processing Ep 146: Ryan Ken: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:41:43,054 - ERROR - Error processing Ep Bonus: The ISIS Tweet to Trans Ally Pipeline with Mckenzee Griffler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:42:48,309 - ERROR - Error processing Ep Bonus: Naveen Kundanmal's Pterodactyl Screech Transition Timeline: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:43:54,127 - ERROR - Error processing Ep 116: River Butcher: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:44:59,840 - ERROR - Error processing Ep 117: Edgar Gomez: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:46:05,225 - ERROR - Error processing Ep 118: Avery Tucker: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:47:10,904 - ERROR - Error processing Ep 119: TAYLOR ALXNDR: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:48:16,368 - ERROR - Error processing Ep 120: Jo Krishnakumar: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:49:22,046 - ERROR - Error processing Ep 121: Imogen Binnie: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:50:27,702 - ERROR - Error processing Ep 122: Amy Schneider: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:51:33,367 - ERROR - Error processing Ep 123: Fran Tirado: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:52:39,041 - ERROR - Error processing Ep 124: Gretchen Felker-Martin: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:53:44,625 - ERROR - Error processing Ep 125: Jackson King: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:54:50,432 - ERROR - Error processing Ep 126: Jules Gill-Peterson: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:55:56,115 - ERROR - Error processing Ep 127: Edith Surreal: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:57:01,816 - ERROR - Error processing Ep 128: Alex Hanna: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:58:07,502 - ERROR - Error processing Ep 129: Leah Lakshmi Piepzna-Samarasinha: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 08:59:13,062 - ERROR - Error processing Ep 130: Gender 901 with Mckenzee Griffler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:00:33,452 - ERROR - Error processing Ep 102: Live in NYC!: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:01:39,168 - ERROR - Error processing Ep 103: Frankie de la Cretaz: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:02:44,944 - ERROR - Error processing Ep 104: Jackie Ess: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:03:50,606 - ERROR - Error processing Ep 105: Chase Strangio: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:04:56,261 - ERROR - Error processing Ep 106: Yeonsoo Julian Kim: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:06:02,014 - ERROR - Error processing Ep 107: Calvin Kasulke: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:07:07,520 - ERROR - Error processing Ep 108: Da’Shaun Harrison: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:08:13,443 - ERROR - Error processing Ep 109: Ezra Furman: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:09:19,036 - ERROR - Error processing Ep 110: Gender 801 + Checking in with Mckenzee Griffler: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:10:24,716 - ERROR - Error processing Ep 111: K Agbebiyi: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:11:30,325 - ERROR - Error processing Ep 112: Io: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:12:35,954 - ERROR - Error processing Ep 113: D’lo: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:13:41,698 - ERROR - Error processing Ep 114: Krys Malcolm Belc: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:14:47,340 - ERROR - Error processing Ep 115: Ev’Yan Whitney: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:15:53,017 - ERROR - Error processing Ep Bonus: The Homo Schedule: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:16:58,491 - ERROR - Error processing Ep Bonus: Trans Day of Visibility: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:18:04,212 - ERROR - Error processing Ep 94: Checking in with Kirby Conrod: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:19:09,751 - ERROR - Error processing Ep 95: Checking in with Carta Monir: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:20:15,359 - ERROR - Error processing Ep 96: A: Maddy Court a.k.a. Xena Worrier Princess: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:21:20,877 - ERROR - Error processing Ep 96: B: John Paul Brammer a.k.a. Hola Papi: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:22:26,380 - ERROR - Error processing Ep 97: Checking in with Mal Blum: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:23:31,954 - ERROR - Error processing Ep 98: Checking in with Gabe Dunn: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:24:37,677 - ERROR - Error processing Ep 99: Checking in with La Tisha Rico: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:25:43,301 - ERROR - Error processing Ep 100: A: Justin McElroy: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:26:48,807 - ERROR - Error processing Ep 100: B: Sam Sanders: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:27:54,318 - ERROR - Error processing Ep 100: C: Lola Pellegrino: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:28:59,855 - ERROR - Error processing Ep 100: D: Tobin Low: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:30:05,393 - ERROR - Error processing Ep 100: E: Carmen Maria Machado: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:31:10,711 - ERROR - Error processing Ep Bonus: bad news / good news!: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:32:16,462 - ERROR - Error processing Ep 77: Imara Jones: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:33:22,109 - ERROR - Error processing Ep 78: Gender 601: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:34:27,798 - ERROR - Error processing Ep 79: Mauree Turner: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:35:33,303 - ERROR - Error processing Ep 80: Casper Cendre: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:36:39,128 - ERROR - Error processing Ep 81: Kai Cheng Thom: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:37:44,918 - ERROR - Error processing Ep 82: Ari Robbins Greene: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:38:50,942 - ERROR - Error processing Ep 83: Salimatu Amabebe: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:39:57,198 - ERROR - Error processing Ep 84: Hil Malatino: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:41:03,413 - ERROR - Error processing Ep 85: Diamond Stylz: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:42:09,319 - ERROR - Error processing Ep 86: Zackary Drucker: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:43:15,239 - ERROR - Error processing Ep 87: Tre’vell Anderson: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:44:21,062 - ERROR - Error processing Ep 88: Noah Adams: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:45:26,711 - ERROR - Error processing Ep 89: Gender 602: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:46:32,287 - ERROR - Error processing Ep 90: Gender 603: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:47:38,028 - ERROR - Error processing Ep 91: Torrey Peters﻿: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:48:43,598 - ERROR - Error processing Ep 92: Francisco Galarte: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:49:49,198 - ERROR - Error processing Ep 93: Jeffrey Marsh: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:50:55,108 - ERROR - Error processing Ep 62: Cyrus Dunham: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:52:00,784 - ERROR - Error processing Ep 63: Alyssa Pariah: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:53:43,759 - ERROR - Error processing Ep 65: Gender 501: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:54:49,241 - ERROR - Error processing Ep 66: Elijah Forbes: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:55:54,979 - ERROR - Error processing Ep 67: Niko Stratis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:57:00,535 - ERROR - Error processing Ep 68: Farhat Rahman: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:58:06,207 - ERROR - Error processing Ep 69: Gender 502: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 09:59:11,753 - ERROR - Error processing Ep 70: Mari Wrobi: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:00:17,332 - ERROR - Error processing Ep 71: Daniel M. Lavery: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:01:22,878 - ERROR - Error processing Ep 72: Vico Ortiz: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:02:28,694 - ERROR - Error processing Ep 73: Atlas Easton: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:03:34,248 - ERROR - Error processing Ep Bonus: Protest, Pride & Police with Morgan Givens: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:04:40,119 - ERROR - Error processing Ep 74: Vidhya Aravind: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:05:45,678 - ERROR - Error processing Ep Bonus: Dominique, Riah, Layleen and Alyssa Pariah: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:06:51,316 - ERROR - Error processing Ep Bonus: Protest, SCOTUS and Queersplaining: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:07:56,999 - ERROR - Error processing Ep 75: Addison Rose Vincent: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:09:02,437 - ERROR - Error processing Ep Bonus: Chaotic Check In From Tuck: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:10:08,201 - ERROR - Error processing Ep 76: Hideo Higashibaba: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:11:13,747 - ERROR - Error processing Ep Bonus: “I’m Seeing My Liberation Right Now”: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:12:19,259 - ERROR - Error processing Ep Bonus: Fire, Fanny Packs and the TransLash Podcast: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:13:24,902 - ERROR - Error processing Ep Bonus: Grants, Mutual Aid, and Laverne Cox on LGBTQ&A: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:14:30,022 - ERROR - Error processing Ep Bonus: Election Day Check-In: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:15:35,502 - ERROR - Error processing Ep Bonus: Happy Elliot Page Day!: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:16:41,122 - ERROR - Error processing Ep 47: Gender 401: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:17:46,574 - ERROR - Error processing Ep 48: Katelyn Burns: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:18:52,174 - ERROR - Error processing Ep 49: Morgan Givens: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:19:57,896 - ERROR - Error processing Ep 50: Maia Kobabe: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:21:03,342 - ERROR - Error processing Ep 51: Nwaobiala: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:22:08,874 - ERROR - Error processing Ep 52: Callie Wright: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:23:14,319 - ERROR - Error processing Ep 53: Kai Minosh Pyle: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:24:20,072 - ERROR - Error processing Ep 54: Sam Long: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:25:26,765 - ERROR - Error processing Ep 55: Morgen Bromell: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:26:32,357 - ERROR - Error processing Ep 56: Emma Jayne: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:27:38,046 - ERROR - Error processing Ep 57: Jerika Che: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:28:43,540 - ERROR - Error processing Ep 58: Elle Halo: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:29:48,925 - ERROR - Error processing Ep Bonus: We’re Late…: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:30:54,384 - ERROR - Error processing Ep 59: Brooke Stepp: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:31:59,888 - ERROR - Error processing Ep 60: Gender 402: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:33:05,317 - ERROR - Error processing Ep Bonus: SCOTUS LGBTQ Discrimination Cases: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:34:11,129 - ERROR - Error processing Ep 61: Lewis Raven Wallace: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:35:16,622 - ERROR - Error processing Ep 32: Archie Bongiovanni: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:36:22,119 - ERROR - Error processing Ep 33: Sonalee Rashatwar: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:37:27,570 - ERROR - Error processing Ep 34: Mac Bolt: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:38:35,261 - ERROR - Error processing Ep 36: A: Rae White: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:39:40,602 - ERROR - Error processing Ep 36: B: Diego Girgado: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:40:45,949 - ERROR - Error processing Ep 36: C: Mo Tester: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:41:55,931 - ERROR - Error processing Ep 39: Grover Wehman-Brown: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:43:01,370 - ERROR - Error processing Ep 40: Carta Monir: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:44:06,954 - ERROR - Error processing Ep 41: Gender 301: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:45:12,448 - ERROR - Error processing Ep 42: Monix Juarbe: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:46:17,859 - ERROR - Error processing Ep 43: Caleb Luna: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:47:23,417 - ERROR - Error processing Ep 44: Caitlin Benedict: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:48:28,894 - ERROR - Error processing Ep 45: Jack Malstrom: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:49:34,526 - ERROR - Error processing Ep 46: Thomas Page McBee: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:50:40,118 - ERROR - Error processing Ep 16: Riley J. Dennis: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:51:45,703 - ERROR - Error processing Ep 17: Naseem Jamnia: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:52:51,119 - ERROR - Error processing Ep 18: Mal Blum: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:53:56,772 - ERROR - Error processing Ep 19: Demian DinéYazhi’: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:55:02,297 - ERROR - Error processing Ep 20: Mattie Lubchansky: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:56:07,742 - ERROR - Error processing Ep 21: Ari Monts: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:57:13,309 - ERROR - Error processing Ep 22: Ryan Cassata: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:58:18,638 - ERROR - Error processing Ep 23: Gender 201: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 10:59:24,046 - ERROR - Error processing Ep 24: Meredith Talusan: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:00:29,616 - ERROR - Error processing Ep 24.5: Sarah Esocoff & Friends: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:01:32,942 - ERROR - Error processing Ep 24.9: Public Trans: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:02:38,470 - ERROR - Error processing Ep 25: TC Frost: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:03:44,030 - ERROR - Error processing Ep 26: Madin Ray Lopez: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:04:49,526 - ERROR - Error processing Ep 27: Gabe Dunn: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:05:55,039 - ERROR - Error processing Ep 28: Joanna Cifredo & Rebecca Kling: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:07:00,690 - ERROR - Error processing Ep 29: Vivek Shraya: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:08:06,147 - ERROR - Error processing Ep 30: Gender 202: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:09:11,576 - ERROR - Error processing Ep 31: Diana James, Sophie Corvidae, and the GRA: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:10:17,044 - ERROR - Error processing Ep Bonus: A Grant Announcement, Sorta: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:11:22,960 - ERROR - Error processing Ep 1: Gender 101: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:12:28,531 - ERROR - Error processing Ep 2: Nicholas Cummins: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:13:33,961 - ERROR - Error processing Ep 3: Carlos the Rollerblader: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:14:39,516 - ERROR - Error processing Ep 4: Eden Rohatensky: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:15:44,947 - ERROR - Error processing Ep 5: Leila Haile & Maya Vivas: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:16:50,381 - ERROR - Error processing Ep 6: Gender 102: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:17:55,902 - ERROR - Error processing Ep 7: Joey Alison Sayers: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:19:01,454 - ERROR - Error processing Ep 8: Soleil Ho: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:20:07,087 - ERROR - Error processing Ep 9: Mads Ambrose: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:21:12,732 - ERROR - Error processing Ep 10: La Tisha Rico: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:23:06,997 - ERROR - Error processing Ep 12: Kevin Cook/Poison Waters: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:24:12,614 - ERROR - Error processing Ep 13: Kirby Conrod: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
+2026-05-09 11:25:20,437 - ERROR - Error processing Ep 15: Gender 103: Max retries exceeded for function call_gemini
+Traceback (most recent call last):
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 887, in main
+    media_refs = extractor.extract_from_text(text, ep, show_notes=show_notes)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 514, in extract_from_text
+    results = retry_with_backoff(call_gemini)
+  File "/home/runner/work/gender_reveal/gender_reveal/extract_media.py", line 263, in retry_with_backoff
+    raise Exception(f"Max retries exceeded for function {fn.__name__}")
+Exception: Max retries exceeded for function call_gemini
+
