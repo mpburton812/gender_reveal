@@ -19,7 +19,13 @@ def get_letterboxd_link(title):
 st.set_page_config(page_title="Gender Reveal Media Explorer", layout="wide")
 
 st.title("Gender Reveal Media Explorer")
-st.markdown("Explore media mentioned in the *Gender Reveal* podcast.")
+st.markdown("""
+<div style="font-size: 0.9em; color: #555; margin-bottom: 20px;">
+This is a fan site of the <b>Gender Reveal</b> podcast that allows you to look up the media references made on the show! 
+So many awesome books, movies, zines, and articles are mentioned - now you can explore the media discussed! 
+If you like the podcast, please take a moment to join the <b>Patreon</b> (link on the left) or buy some <b>Official Merch</b>!
+</div>
+""", unsafe_allow_html=True)
 
 # Load data with caching
 @st.cache_data(ttl=600)
