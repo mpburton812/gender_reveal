@@ -669,13 +669,19 @@ class PipelineState:
             return
         
         try:
+            # Function to extract numeric part for robust comparison
+            def to_float(val):
+                try:
+                    match = re.search(r'(\d+)', str(val))
+                    return float(match.group(1)) if match else -1.0
+                except: return -1.0
+
             df = pd.read_csv(self.csv_file)
-            # Ensure episode_number is treated as string for comparison
-            df['episode_number'] = df['episode_number'].astype(str)
-            target_ep = str(episode_number)
+            target_num = to_float(episode_number)
             
             initial_count = len(df)
-            df = df[df['episode_number'] != target_ep]
+            # Remove rows where the numeric part of episode_number matches
+            df = df[df['episode_number'].apply(to_float) != target_num]
             
             if len(df) < initial_count:
                 df.to_csv(self.csv_file, index=False)
