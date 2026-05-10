@@ -13,8 +13,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from google import genai
 from google.genai import types
-import gspread
-from google.oauth2.service_account import Credentials
+import libsql_client
 from typing import List, Dict, Any
 import docx
 import PyPDF2
@@ -28,7 +27,10 @@ URL_LISTEN = "https://www.genderpodcast.com/listen"
 TRANSCRIPTS_DIR = "transcripts"
 PIPELINE_STATE_FILE = "pipeline_state.json"
 CSV_OUTPUT = "extracted_media.csv"
-GOOGLE_SHEET_ID = "1lKL7VkZoLxbrLbX2bVyF8wdb8bxXxBbJGgoQSg7OVUU"
+
+# Turso Database Configuration
+TURSO_DATABASE_URL = os.getenv("TURSO_DATABASE_URL")
+TURSO_AUTH_TOKEN = os.getenv("TURSO_AUTH_TOKEN")
 
 # Logging Configuration
 ERROR_LOG = "error_log.txt"
@@ -86,7 +88,7 @@ class ExecutionSummary:
             f"Episodes Skipped (Already Done): {self.episodes_skipped}\n"
             f"Total Media Refs Extracted: {self.media_refs_extracted}\n"
             f"Errors Encountered: {self.errors_encountered}\n"
-            f"Google Sheets Sync: {'SUCCESS' if self.sync_success else 'FAILED/SKIPPED'}\n"
+            f"Turso Database Sync: {'SUCCESS' if self.sync_success else 'FAILED/SKIPPED'}\n"
             f"---------------------------\n"
         )
         perf_logger.info(summary)
@@ -98,9 +100,6 @@ class ExecutionSummary:
 # Flash Free Tier is officially 15 RPM/1M TPM, but we'll use 5/500k for safety with Search.
 TPM_LIMIT = 500000
 RPM_LIMIT = 5 
-
-# Google Sheets Configuration
-SERVICE_ACCOUNT_FILE = "service_account.json"  # User must provide this
 
 # Media Categories
 CATEGORIES = [
@@ -721,45 +720,86 @@ def sort_dataframe(df):
     df = df.drop(columns=['season_sort', 'ep_sort'])
     return df
 
-# --- GOOGLE SHEETS ---
+# --- TURSO DATABASE ---
 
-def sync_to_google_sheets(csv_file, service_account_file, sheet_id):
-    if not os.path.exists(service_account_file):
-        print(f"Skipping Google Sheets sync: {service_account_file} not found.")
-        return
+def sync_to_turso(csv_file):
+    if not TURSO_DATABASE_URL or not TURSO_AUTH_TOKEN:
+        print("Skipping Turso sync: TURSO_DATABASE_URL or TURSO_AUTH_TOKEN not found in environment.")
+        return False
 
     if not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0:
-        print("Skipping Google Sheets sync: CSV file is empty or missing.")
-        return
+        print("Skipping Turso sync: CSV file is empty or missing.")
+        return False
 
-    print("Syncing to Google Sheets...")
-    scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-    creds = Credentials.from_service_account_file(service_account_file, scopes=scope)
-    client = gspread.authorize(creds)
-    
-    sheet = client.open_by_key(sheet_id).get_worksheet(0)
+    print(f"Syncing to Turso Database ({TURSO_DATABASE_URL})...")
     
     try:
         df = pd.read_csv(csv_file, encoding='utf-8')
     except Exception:
-        # Fallback for malformed CSVs during sync
         df = pd.read_csv(csv_file, encoding='utf-8', on_bad_lines='skip')
     
     df = df.fillna("")
     if df.empty:
         print("CSV is empty, nothing to sync.")
-        return
+        return False
 
     # Sort before syncing
     df = sort_dataframe(df)
-    # Save the sorted version back to CSV as well
     df.to_csv(csv_file, index=False)
 
-    data = [df.columns.values.tolist()] + df.values.tolist()
-    
-    sheet.clear()
-    sheet.update(data, 'A1')
-    print("Google Sheet updated successfully.")
+    try:
+        # libsql-client sync execute
+        client = libsql_client.create_client_sync(url=TURSO_DATABASE_URL, auth_token=TURSO_AUTH_TOKEN)
+        
+        # Create table if not exists
+        client.execute("""
+            CREATE TABLE IF NOT EXISTS media_references (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                season TEXT,
+                episode_number TEXT,
+                episode_name TEXT,
+                episode_date TEXT,
+                guest TEXT,
+                media_type TEXT,
+                media_sub_category TEXT,
+                media_name TEXT,
+                url_to_media TEXT,
+                mention_context TEXT,
+                image_url TEXT,
+                episode_url TEXT
+            )
+        """)
+        
+        # Clear and re-insert (consistent with previous Sheets logic)
+        client.execute("DELETE FROM media_references")
+        
+        # Prepare batch insert
+        columns = [
+            "season", "episode_number", "episode_name", "episode_date", "guest",
+            "media_type", "media_sub_category", "media_name", "url_to_media", 
+            "mention_context", "image_url", "episode_url"
+        ]
+        
+        placeholders = ", ".join(["?"] * len(columns))
+        sql = f"INSERT INTO media_references ({', '.join(columns)}) VALUES ({placeholders})"
+        
+        # Convert df to list of tuples
+        records = [tuple(x) for x in df[columns].values]
+        
+        # Batch execute using transactions for speed
+        batch_size = 100
+        for i in range(0, len(records), batch_size):
+            batch = records[i:i+batch_size]
+            with client.transaction() as tx:
+                for record in batch:
+                    tx.execute(sql, record)
+                    
+        print("Turso Database updated successfully.")
+        client.close()
+        return True
+    except Exception as e:
+        print(f"      ERROR syncing to Turso: {e}")
+        return False
 
 # --- MAIN ---
 
@@ -813,7 +853,7 @@ def main():
             
             # If ONLY doing enrichment, sync and exit
             if args.skip_process or args.sync_only:
-                sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
+                summary.sync_success = sync_to_turso(CSV_OUTPUT)
                 summary.log_summary(perf_log)
                 return
 
@@ -822,8 +862,7 @@ def main():
             perf_log.info("Starting STANDALONE SYNC mode.")
             if os.path.exists(CSV_OUTPUT):
                 try:
-                    sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
-                    summary.sync_success = True
+                    summary.sync_success = sync_to_turso(CSV_OUTPUT)
                 except Exception as e:
                     error_log.error(f"Standalone Sync Failed: {e}\n{traceback.format_exc()}")
                     summary.errors_encountered += 1
@@ -916,13 +955,13 @@ def main():
                 summary.errors_encountered += 1
                 continue
 
-        # 3. Final Sync to Google Sheets
-        perf_log.info("STEP 3: Synchronizing with Google Sheets...")
+        # 3. Final Sync to Turso Database
+        perf_log.info("STEP 3: Synchronizing with Turso Database...")
         if os.path.exists(CSV_OUTPUT):
             try:
-                sync_to_google_sheets(CSV_OUTPUT, SERVICE_ACCOUNT_FILE, GOOGLE_SHEET_ID)
-                summary.sync_success = True
-                perf_log.info("Step 3 Complete: Google Sheets updated.")
+                summary.sync_success = sync_to_turso(CSV_OUTPUT)
+                if summary.sync_success:
+                    perf_log.info("Step 3 Complete: Turso Database updated.")
             except Exception as e:
                 error_log.error(f"Sync Failed: {e}\n{traceback.format_exc()}")
                 summary.errors_encountered += 1

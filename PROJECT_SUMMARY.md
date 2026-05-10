@@ -17,7 +17,7 @@ This project is an autonomous pipeline that scrapes transcripts from the *Gender
 ## System Architecture
 *   **Language**: Python 3.10+
 *   **AI**: Google Gemini Pro (with Search tool)
-*   **Database**: Local CSV (`extracted_media.csv`) synchronized to Google Sheets.
+*   **Database**: Turso (libSQL) for persistent cloud storage and Streamlit integration.
 *   **Hosting**: Dashboard on Streamlit Community Cloud; Pipeline on GitHub Actions.
 *   **Security**: Credentials managed via `.env` (local) and GitHub Secrets (automated).
 

@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from streamlit_gsheets import GSheetsConnection
+import libsql_client
 import urllib.parse
 
 # --- UTILS ---
@@ -31,13 +31,20 @@ If you like the podcast, please take a moment to join the <b>Patreon</b> (link o
 @st.cache_data(ttl=600)
 def load_data():
     try:
-        # Simplest possible connection
-        # It will automatically find [connections.gsheets] in secrets
-        conn = st.connection("gsheets", type=GSheetsConnection)
-        df = conn.read()
+        # Get Turso credentials from streamlit secrets
+        # These should be defined in .streamlit/secrets.toml or Streamlit Cloud Secrets
+        url = st.secrets["turso"]["url"]
+        token = st.secrets["turso"]["auth_token"]
         
-        if df is None or df.empty:
-            st.warning("The Google Sheet appears to be empty.")
+        client = libsql_client.create_client_sync(url=url, auth_token=token)
+        result = client.execute("SELECT * FROM media_references")
+        
+        # Convert result to DataFrame
+        df = pd.DataFrame(result.rows, columns=result.columns)
+        client.close()
+        
+        if df.empty:
+            st.warning("The Turso Database appears to be empty.")
             return None
 
         if 'episode_number' in df.columns:
@@ -60,8 +67,8 @@ def load_data():
             
         return df
     except Exception as e:
-        st.error(f"### Connection Error\n{e}")
-        st.info("Check your Streamlit Cloud Secrets against `streamlit_secrets_template.toml` and ensure the Sheet is Shared with your service account email.")
+        st.error(f"### Database Connection Error\n{e}")
+        st.info("Check your Streamlit Cloud Secrets against `streamlit_secrets_template.toml`.")
         return None
 
 df = load_data()

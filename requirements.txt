@@ -1,12 +1,10 @@
 requests
 beautifulsoup4
 google-genai
-gspread
 pandas
-google-auth
 python-docx
 PyPDF2
 streamlit
-st-gsheets-connection
+libsql-client
 python-dotenv
 lxml

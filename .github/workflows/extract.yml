@@ -39,13 +39,11 @@ jobs:
           pip install -r requirements.txt
           pip install python-dotenv
 
-      - name: Create service_account.json
-        run: |
-          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > service_account.json
-
       - name: Run Extraction
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: |
           LIMIT="${{ github.event.inputs.limit || '20' }}"
           BACKFILL="${{ github.event.inputs.backfill == 'true' && '--backfill' || '' }}"
