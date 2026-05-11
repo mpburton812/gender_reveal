@@ -458,3 +458,59 @@ Google Sheets Sync: SUCCESS
 ---------------------------
 
 2026-05-10 13:32:24,137 - Pipeline execution ended.
+2026-05-10 15:47:50,869 - Starting STANDALONE SYNC mode.
+2026-05-10 15:47:51,055 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-10 15:47:50
+Duration: 0:00:00.186729
+Episodes Found: 0
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 0
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Turso Database Sync: FAILED/SKIPPED
+---------------------------
+
+2026-05-10 15:47:51,055 - Pipeline execution ended.
+2026-05-11 08:33:29,417 - Starting STANDALONE SYNC mode.
+2026-05-11 08:33:29,776 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-11 08:33:29
+Duration: 0:00:00.360352
+Episodes Found: 0
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 0
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Turso Database Sync: FAILED/SKIPPED
+---------------------------
+
+2026-05-11 08:33:29,777 - Pipeline execution ended.
+2026-05-11 08:49:31,661 - Starting STANDALONE SYNC mode.
+2026-05-11 08:49:32,118 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-11 08:49:31
+Duration: 0:00:00.457401
+Episodes Found: 0
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 0
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Turso Database Sync: SUCCESS
+---------------------------
+
+2026-05-11 08:49:32,119 - Pipeline execution ended.
+2026-05-11 08:49:49,969 - Starting STANDALONE SYNC mode.
+2026-05-11 08:49:50,235 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-11 08:49:49
+Duration: 0:00:00.266816
+Episodes Found: 0
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 0
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Turso Database Sync: SUCCESS
+---------------------------
+
+2026-05-11 08:49:50,235 - Pipeline execution ended.

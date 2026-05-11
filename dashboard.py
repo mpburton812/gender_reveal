@@ -36,6 +36,10 @@ def load_data():
         url = st.secrets["turso"]["url"]
         token = st.secrets["turso"]["auth_token"]
         
+        # Force HTTPS if libsql:// is provided (avoids WebSocket 505 errors)
+        if url.startswith("libsql://"):
+            url = url.replace("libsql://", "https://", 1)
+        
         client = libsql_client.create_client_sync(url=url, auth_token=token)
         result = client.execute("SELECT * FROM media_references")
         

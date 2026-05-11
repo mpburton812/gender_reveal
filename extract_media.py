@@ -20,7 +20,7 @@ import PyPDF2
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(override=True)
 
 # --- CONFIGURATION ---
 URL_LISTEN = "https://www.genderpodcast.com/listen"
@@ -786,13 +786,21 @@ def sync_to_turso(csv_file):
         # Convert df to list of tuples
         records = [tuple(x) for x in df[columns].values]
         
-        # Batch execute using transactions for speed
-        batch_size = 100
+        # Batch execute using batch() for HTTP support
+        batch_size = 50 # Slightly smaller batches for reliability over HTTP
         for i in range(0, len(records), batch_size):
-            batch = records[i:i+batch_size]
-            with client.transaction() as tx:
-                for record in batch:
-                    tx.execute(sql, record)
+            batch_records = records[i:i+batch_size]
+            batch_statements = [(sql, record) for record in batch_records]
+            try:
+                client.batch(batch_statements)
+            except Exception as e:
+                print(f"      ERROR in batch {i//batch_size + 1}: {e}")
+                # Fallback to individual inserts if batch fails
+                for record in batch_records:
+                    try:
+                        client.execute(sql, record)
+                    except Exception as inner_e:
+                        print(f"      CRITICAL ERROR on record: {inner_e}")
                     
         print("Turso Database updated successfully.")
         client.close()

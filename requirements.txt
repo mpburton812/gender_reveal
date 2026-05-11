@@ -5,6 +5,6 @@ pandas
 python-docx
 PyPDF2
 streamlit
-libsql-client
+libsql-client>=0.3.1
 python-dotenv
 lxml
