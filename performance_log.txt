@@ -532,3 +532,21 @@ Turso Database Sync: FAILED/SKIPPED
 ---------------------------
 
 2026-05-11 13:10:38,891 - Pipeline execution ended.
+2026-05-11 13:20:08,225 - Starting PIPELINE run (Mode: STANDARD).
+2026-05-11 13:20:09,941 - STEP 1: Scraping episode list...
+2026-05-11 13:20:10,205 - Step 1 Complete: Found 252 episodes.
+2026-05-11 13:20:10,205 - STEP 2: Processing downloads and media extraction...
+2026-05-11 13:30:06,232 - STEP 3: Synchronizing with Turso Database...
+2026-05-11 13:30:06,232 - 
+--- EXECUTION SUMMARY ---
+Run Date: 2026-05-11 13:20:08
+Duration: 0:09:58.007956
+Episodes Found: 252
+Episodes Processed (AI): 0
+Episodes Skipped (Already Done): 251
+Total Media Refs Extracted: 0
+Errors Encountered: 0
+Turso Database Sync: FAILED/SKIPPED
+---------------------------
+
+2026-05-11 13:30:06,233 - Pipeline execution ended.
