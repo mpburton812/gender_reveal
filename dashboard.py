@@ -19,6 +19,15 @@ def get_letterboxd_link(title):
 st.set_page_config(page_title="Gender Reveal Media Explorer", layout="wide")
 
 st.title("Gender Reveal Media Explorer")
+
+st.markdown("""
+<div style="background-color: #ffe6e6; padding: 10px; border-radius: 5px; border: 1px solid #ff0000; margin-bottom: 20px;">
+    <p style="color: #cc0000; font-weight: bold; margin-bottom: 0;">
+        🚧 The database is currently building! Please check back daily as we add additional records from the show's 250+ episode history.
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown("""
 <div style="font-size: 0.9em; color: #555; margin-bottom: 20px;">
 This is a fan site of the <b>Gender Reveal</b> podcast that allows you to look up the media references made on the show! 
