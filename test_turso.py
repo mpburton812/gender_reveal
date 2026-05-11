@@ -13,16 +13,19 @@ print(f"Env URL: {url_env}")
 
 def test_url(url, token):
     print(f"\nTesting: {url}")
+    client = None
     try:
         client = libsql_client.create_client_sync(url=url, auth_token=token)
         result = client.execute("SELECT 1")
         print("✅ SUCCESS!")
         print(f"   Result: {result.rows}")
-        client.close()
         return True
     except Exception as e:
         print(f"❌ FAILED: {e}")
         return False
+    finally:
+        if client:
+            client.close()
 
 # 1. Test from .env
 if url_env and token_env:
