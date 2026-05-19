@@ -1,5 +1,7 @@
 # Gender Reveal Media Explorer - Project Summary
 
+> **Archived May 19, 2026.** Successor: [gender_reveal_media](https://github.com/mpburton812/gender_reveal_media). See [ARCHIVED.md](ARCHIVED.md).
+
 ## Overview
 This project is an autonomous pipeline that scrapes transcripts from the *Gender Reveal* podcast, extracts media references (books, movies, music, etc.) using Gemini AI, enriches them with visual covers, and displays them in a high-end Streamlit dashboard.
 

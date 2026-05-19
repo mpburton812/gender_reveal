@@ -1,9 +1,8 @@
+# Disabled: repository archived May 2026. Successor: https://github.com/mpburton812/gender_reveal_media
 name: Media Extraction Pipeline
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # Daily at midnight UTC
-  workflow_dispatch:      # Manual trigger
+  workflow_dispatch:      # Manual trigger only (repo archived; schedule removed)
     inputs:
       limit:
         description: 'Number of episodes to process (e.g., 252 for entire history)'
